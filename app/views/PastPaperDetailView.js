@@ -31,16 +31,23 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
 
   if (!paper) return null;
 
-  const totalQuestions = paper.sections.reduce(
-    (total, section) => total + section.questions.length,
-    0
-  );
+  const totalQuestions = paper.sections.reduce((total, section) => {
+    return total + section.questions.reduce((questionTotal, q) => {
+      if (q.subQuestions) {
+        return questionTotal + q.subQuestions.length;
+      }
+      return questionTotal + 1;
+    }, 0);
+  }, 0);
 
-  const totalMarks = paper.sections.reduce(
-    (total, section) =>
-      total + section.questions.reduce((sum, q) => sum + q.marks, 0),
-    0
-  );
+  const totalMarks = paper.sections.reduce((total, section) => {
+    return total + section.questions.reduce((sum, q) => {
+      if (q.subQuestions) {
+        return sum + q.subQuestions.reduce((subSum, subQ) => subSum + (subQ.marks || 0), 0);
+      }
+      return sum + (q.marks || 0);
+    }, 0);
+  }, 0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 p-8">
@@ -113,24 +120,55 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
               </div>
 
               {section.introText && (
-                <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-500 rounded">
-                  <h3 className="font-semibold text-blue-900 mb-2">Question 1</h3>
+                <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
+                  <h3 className="font-semibold text-yellow-900 mb-2">Instructions</h3>
                   <p className="text-gray-700 leading-relaxed whitespace-pre-line">
                     {section.introText}
                   </p>
                 </div>
               )}
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {section.questions.map((question) => (
                   <div key={question.id}>
-                    <div className="text-sm font-semibold text-gray-500 mb-2">
-                      {question.questionNumber || `Question ${question.id}`}
-                    </div>
-                    <PastPaperQuestion
-                      question={question}
-                      onSpeak={speak}
-                    />
+                    {question.isParentQuestion ? (
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                        <div className="mb-4">
+                          <h3 className="text-xl font-bold text-blue-900 mb-3">
+                            Question {question.questionNumber}
+                          </h3>
+                          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+                            {question.question}
+                          </p>
+                        </div>
+
+                        {question.subQuestions && (
+                          <div className="space-y-4 mt-6">
+                            {question.subQuestions.map((subQuestion) => (
+                              <div key={subQuestion.id} className="bg-white rounded-lg p-4 shadow-sm">
+                                <div className="text-sm font-semibold text-indigo-600 mb-2">
+                                  {question.questionNumber}({subQuestion.questionNumber})
+                                </div>
+                                <PastPaperQuestion
+                                  question={subQuestion}
+                                  onSpeak={speak}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div>
+                        <div className="text-sm font-semibold text-gray-500 mb-2">
+                          Question {question.questionNumber}
+                        </div>
+                        <PastPaperQuestion
+                          question={question}
+                          onSpeak={speak}
+                        />
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
