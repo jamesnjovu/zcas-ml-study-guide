@@ -4,10 +4,12 @@ import { VIEWS } from '../constants';
 export const useNavigation = () => {
   const [currentView, setCurrentView] = useState(VIEWS.HOME);
   const [selectedUnit, setSelectedUnit] = useState(null);
+  const [selectedPastPaper, setSelectedPastPaper] = useState(null);
 
   const goToHome = useCallback(() => {
     setCurrentView(VIEWS.HOME);
     setSelectedUnit(null);
+    setSelectedPastPaper(null);
   }, []);
 
   const goToQuizList = useCallback(() => {
@@ -37,14 +39,32 @@ export const useNavigation = () => {
     }
   }, [selectedUnit]);
 
+  const goToPastPapers = useCallback(() => {
+    setCurrentView(VIEWS.PAST_PAPERS);
+    setSelectedPastPaper(null);
+  }, []);
+
+  const goToPastPaperDetail = useCallback((paper) => {
+    setSelectedPastPaper(paper);
+    setCurrentView(VIEWS.PAST_PAPER_DETAIL);
+  }, []);
+
+  const goBackToPastPapers = useCallback(() => {
+    setCurrentView(VIEWS.PAST_PAPERS);
+  }, []);
+
   return {
     currentView,
     selectedUnit,
+    selectedPastPaper,
     goToHome,
     goToQuizList,
     goToUnit,
     goToQuiz,
     goBackToUnit,
-    goToNextUnit
+    goToNextUnit,
+    goToPastPapers,
+    goToPastPaperDetail,
+    goBackToPastPapers
   };
 };

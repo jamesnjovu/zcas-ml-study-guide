@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { List, Trash2 } from 'lucide-react';
+import { List, Trash2, FileText } from 'lucide-react';
 import { Button } from '../components/Button';
 import { UnitCard } from '../components/UnitCard';
 
-export const HomeView = ({ units, quizScores, onSelectUnit, onViewQuizList, onClearData }) => {
+export const HomeView = ({ units, quizScores, onSelectUnit, onViewQuizList, onViewPastPapers, onClearData }) => {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const handleClearData = () => {
@@ -28,6 +28,9 @@ export const HomeView = ({ units, quizScores, onSelectUnit, onViewQuizList, onCl
           <div className="mt-6 flex gap-4 justify-center flex-wrap">
             <Button onClick={onViewQuizList} variant="purple" icon={List}>
               View All Quizzes
+            </Button>
+            <Button onClick={onViewPastPapers} variant="success" icon={FileText}>
+              Past Papers
             </Button>
             {hasData && (
               <Button onClick={() => setShowConfirm(true)} variant="danger" icon={Trash2}>
@@ -84,5 +87,6 @@ HomeView.propTypes = {
   quizScores: PropTypes.object.isRequired,
   onSelectUnit: PropTypes.func.isRequired,
   onViewQuizList: PropTypes.func.isRequired,
+  onViewPastPapers: PropTypes.func.isRequired,
   onClearData: PropTypes.func
 };
