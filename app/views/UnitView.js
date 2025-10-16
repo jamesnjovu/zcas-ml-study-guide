@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Home, FileText, Award, ArrowRight } from 'lucide-react';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
+import { TextToSpeechControls } from '../components/TextToSpeechControls';
+import { useTextToSpeech } from '../hooks/useTextToSpeech';
 
 export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => {
   const currentIndex = units.findIndex((u) => u.id === unit.id);
   const hasNextUnit = currentIndex < units.length - 1;
+
+  const { speak, pause, resume, stop, isSpeaking, isPaused, isSupported } = useTextToSpeech();
+
+  // Prepare the full text for reading
+  const fullText = useMemo(() => {
+    const takeawaysText = unit.keyTakeaways
+      .map((takeaway, index) => `Takeaway ${index + 1}: ${takeaway}`)
+      .join('. ');
+
+    return `${unit.title}. ${unit.summary}. Key Takeaways: ${takeawaysText}`;
+  }, [unit]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-8">
@@ -23,9 +36,22 @@ export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => 
 
         <Card className="mb-6">
           <div className="mb-6">
-            <Badge variant="blue" className="mb-4">
-              Unit {unit.id} • Pages {unit.pages}
-            </Badge>
+            <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
+              <Badge variant="blue">
+                Unit {unit.id} • Pages {unit.pages}
+              </Badge>
+              <TextToSpeechControls
+                isSpeaking={isSpeaking}
+                isPaused={isPaused}
+                isSupported={isSupported}
+                onSpeak={speak}
+                onPause={pause}
+                onResume={resume}
+                onStop={stop}
+                text={fullText}
+                label="Read Unit Content"
+              />
+            </div>
             <h2 className="text-3xl font-bold text-gray-800 mb-4">{unit.title}</h2>
           </div>
 

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CheckCircle, X } from 'lucide-react';
+import { CheckCircle, X, Volume2 } from 'lucide-react';
 
 export const QuizQuestion = ({
   question,
   questionIndex,
   selectedAnswer,
   onSelectAnswer,
-  isSubmitted
+  isSubmitted,
+  onReadQuestion
 }) => {
   const getOptionStyles = (optionIndex) => {
     const isSelected = selectedAnswer === optionIndex;
@@ -46,11 +47,30 @@ export const QuizQuestion = ({
     return null;
   };
 
+  const readQuestion = () => {
+    const optionsText = question.options
+      .map((opt, idx) => `Option ${idx + 1}: ${opt}`)
+      .join('. ');
+    const fullText = `Question ${questionIndex + 1}: ${question.question}. ${optionsText}`;
+    onReadQuestion(fullText);
+  };
+
   return (
     <div className="border-2 border-gray-200 rounded-lg p-6">
-      <h4 className="font-semibold text-gray-800 mb-4">
-        {questionIndex + 1}. {question.question}
-      </h4>
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <h4 className="font-semibold text-gray-800 flex-1">
+          {questionIndex + 1}. {question.question}
+        </h4>
+        {onReadQuestion && (
+          <button
+            onClick={readQuestion}
+            className="flex-shrink-0 p-2 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-700 transition-colors"
+            title="Read question aloud"
+          >
+            <Volume2 className="w-5 h-5" />
+          </button>
+        )}
+      </div>
       <div className="space-y-2">
         {question.options.map((option, optionIndex) => (
           <button
@@ -81,5 +101,6 @@ QuizQuestion.propTypes = {
   questionIndex: PropTypes.number.isRequired,
   selectedAnswer: PropTypes.number,
   onSelectAnswer: PropTypes.func.isRequired,
-  isSubmitted: PropTypes.bool.isRequired
+  isSubmitted: PropTypes.bool.isRequired,
+  onReadQuestion: PropTypes.func
 };

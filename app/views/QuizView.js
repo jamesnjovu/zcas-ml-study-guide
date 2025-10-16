@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { QuizQuestion } from '../components/QuizQuestion';
+import { useTextToSpeech } from '../hooks/useTextToSpeech';
 
 export const QuizView = ({
   unit,
@@ -18,6 +19,8 @@ export const QuizView = ({
 }) => {
   const allAnswered = Object.keys(quizAnswers).length === unit.quiz.length;
   const percentageScore = Math.round((score / unit.quiz.length) * 100);
+
+  const { speak } = useTextToSpeech();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 p-8">
@@ -68,6 +71,7 @@ export const QuizView = ({
                 selectedAnswer={quizAnswers[qIndex]}
                 onSelectAnswer={onSelectAnswer}
                 isSubmitted={isSubmitted}
+                onReadQuestion={speak}
               />
             ))}
           </div>
