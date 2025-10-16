@@ -29,22 +29,28 @@ const MLStudyApp = () => {
     selectAnswer,
     submitQuiz,
     resetQuiz,
-    calculateScore
+    calculateScore,
+    clearAllData
   } = useQuiz();
 
   const handleSelectUnit = (unit) => {
     goToUnit(unit);
-    resetQuiz();
+    resetQuiz(unit.id);
   };
 
   const handleStartQuiz = () => {
-    resetQuiz();
+    if (selectedUnit) {
+      resetQuiz(selectedUnit.id);
+    }
     goToQuiz();
   };
 
   const handleNextUnit = () => {
     goToNextUnit(units);
-    resetQuiz();
+    const nextUnitIndex = units.findIndex(u => u.id === selectedUnit?.id) + 1;
+    if (nextUnitIndex < units.length) {
+      resetQuiz(units[nextUnitIndex].id);
+    }
   };
 
   const handleSubmitQuiz = () => {
@@ -60,6 +66,7 @@ const MLStudyApp = () => {
           quizScores={quizScores}
           onSelectUnit={handleSelectUnit}
           onViewQuizList={goToQuizList}
+          onClearData={clearAllData}
         />
       );
 
