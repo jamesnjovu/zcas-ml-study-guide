@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { PastPaperQuestion } from '../components/PastPaperQuestion';
 import { TextToSpeechControls } from '../components/TextToSpeechControls';
 import { useTextToSpeech } from '../hooks/useTextToSpeech';
+import { renderMarkdown } from '../utils/markdownRenderer';
 
 export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
   const { speak, pause, resume, stop, isSpeaking, isPaused } = useTextToSpeech();
@@ -122,9 +123,9 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
               {section.introText && (
                 <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded">
                   <h3 className="font-semibold text-yellow-900 mb-2">Instructions</h3>
-                  <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                    {section.introText}
-                  </p>
+                  <div className="text-gray-700 leading-relaxed">
+                    {renderMarkdown(section.introText)}
+                  </div>
                 </div>
               )}
 
@@ -133,14 +134,21 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
                   <div key={question.id}>
                     {question.isParentQuestion ? (
                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
-                        <div className="mb-4">
-                          <h3 className="text-xl font-bold text-blue-900 mb-3">
+                        {question.question && (
+                          <div className="mb-4">
+                            <h3 className="text-xl font-bold text-blue-900 mb-3">
+                              Question {question.questionNumber}
+                            </h3>
+                            <div className="text-gray-700 leading-relaxed">
+                              {renderMarkdown(question.question)}
+                            </div>
+                          </div>
+                        )}
+                        {!question.question && (
+                          <h3 className="text-xl font-bold text-blue-900 mb-4">
                             Question {question.questionNumber}
                           </h3>
-                          <p className="text-gray-700 leading-relaxed whitespace-pre-line">
-                            {question.question}
-                          </p>
-                        </div>
+                        )}
 
                         {question.subQuestions && (
                           <div className="space-y-4 mt-6">

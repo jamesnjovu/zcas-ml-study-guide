@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Volume2, ChevronDown, ChevronUp } from 'lucide-react';
+import { renderMarkdown } from '../utils/markdownRenderer';
 
 export const PastPaperQuestion = ({ question, onSpeak }) => {
   const [showAnswer, setShowAnswer] = useState(false);
@@ -23,9 +24,9 @@ export const PastPaperQuestion = ({ question, onSpeak }) => {
               {question.marks} marks
             </span>
           </div>
-          <p className="text-lg text-gray-800 font-medium leading-relaxed">
-            {question.question}
-          </p>
+          <div className="text-lg text-gray-800 font-medium leading-relaxed">
+            {renderMarkdown(question.question)}
+          </div>
         </div>
         {onSpeak && (
           <button
@@ -38,30 +39,34 @@ export const PastPaperQuestion = ({ question, onSpeak }) => {
         )}
       </div>
 
-      <button
-        onClick={() => setShowAnswer(!showAnswer)}
-        className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
-      >
-        {showAnswer ? (
-          <>
-            <ChevronUp className="w-5 h-5" />
-            Hide Sample Answer
-          </>
-        ) : (
-          <>
-            <ChevronDown className="w-5 h-5" />
-            Show Sample Answer
-          </>
-        )}
-      </button>
+      {question.sampleAnswer && (
+        <>
+          <button
+            onClick={() => setShowAnswer(!showAnswer)}
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
+          >
+            {showAnswer ? (
+              <>
+                <ChevronUp className="w-5 h-5" />
+                Hide Sample Answer
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-5 h-5" />
+                Show Sample Answer
+              </>
+            )}
+          </button>
 
-      {showAnswer && (
-        <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <h4 className="font-semibold text-green-800 mb-2">Sample Answer:</h4>
-          <div className="text-gray-700 whitespace-pre-line leading-relaxed">
-            {question.sampleAnswer}
-          </div>
-        </div>
+          {showAnswer && (
+            <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+              <h4 className="font-semibold text-green-800 mb-2">Sample Answer:</h4>
+              <div className="text-gray-700 leading-relaxed">
+                {renderMarkdown(question.sampleAnswer)}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
