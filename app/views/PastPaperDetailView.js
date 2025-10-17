@@ -6,6 +6,7 @@ import { PastPaperQuestion } from '../components/PastPaperQuestion';
 import { TextToSpeechControls } from '../components/TextToSpeechControls';
 import { useTextToSpeech } from '../hooks/useTextToSpeech';
 import { renderMarkdown } from '../utils/markdownRenderer';
+import { stripMarkdown } from '../utils/stripMarkdown';
 
 export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
   const { speak, pause, resume, stop, isSpeaking, isPaused, isSupported } = useTextToSpeech();
@@ -21,26 +22,26 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
         text += 'This section is mandatory. ';
       }
       if (section.introText) {
-        text += `${section.introText}. `;
+        text += `${stripMarkdown(section.introText)}. `;
       }
 
       section.questions.forEach((question) => {
         if (question.isParentQuestion) {
           if (question.question) {
-            text += `Question ${question.questionNumber}: ${question.question}. `;
+            text += `Question ${question.questionNumber}: ${stripMarkdown(question.question)}. `;
           }
           if (question.subQuestions) {
             question.subQuestions.forEach((subQuestion) => {
-              text += `Part ${subQuestion.questionNumber}: ${subQuestion.question}. `;
+              text += `Part ${subQuestion.questionNumber}: ${stripMarkdown(subQuestion.question)}. `;
               if (subQuestion.sampleAnswer) {
-                text += `Sample Answer: ${subQuestion.sampleAnswer}. `;
+                text += `Sample Answer: ${stripMarkdown(subQuestion.sampleAnswer)}. `;
               }
             });
           }
         } else {
-          text += `Question ${question.questionNumber}: ${question.question}. `;
+          text += `Question ${question.questionNumber}: ${stripMarkdown(question.question)}. `;
           if (question.sampleAnswer) {
-            text += `Sample Answer: ${question.sampleAnswer}. `;
+            text += `Sample Answer: ${stripMarkdown(question.sampleAnswer)}. `;
           }
         }
       });
@@ -164,12 +165,12 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
                               </h3>
                               <button
                                 onClick={() => {
-                                  let text = `Question ${question.questionNumber}: ${question.question}. `;
+                                  let text = `Question ${question.questionNumber}: ${stripMarkdown(question.question)}. `;
                                   if (question.subQuestions) {
                                     question.subQuestions.forEach((subQ) => {
-                                      text += `Part ${subQ.questionNumber}: ${subQ.question}. `;
+                                      text += `Part ${subQ.questionNumber}: ${stripMarkdown(subQ.question)}. `;
                                       if (subQ.sampleAnswer) {
-                                        text += `Sample Answer: ${subQ.sampleAnswer}. `;
+                                        text += `Sample Answer: ${stripMarkdown(subQ.sampleAnswer)}. `;
                                       }
                                     });
                                   }
@@ -196,9 +197,9 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
                                 let text = `Question ${question.questionNumber}. `;
                                 if (question.subQuestions) {
                                   question.subQuestions.forEach((subQ) => {
-                                    text += `Part ${subQ.questionNumber}: ${subQ.question}. `;
+                                    text += `Part ${subQ.questionNumber}: ${stripMarkdown(subQ.question)}. `;
                                     if (subQ.sampleAnswer) {
-                                      text += `Sample Answer: ${subQ.sampleAnswer}. `;
+                                      text += `Sample Answer: ${stripMarkdown(subQ.sampleAnswer)}. `;
                                     }
                                   });
                                 }

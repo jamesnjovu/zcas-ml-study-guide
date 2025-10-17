@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Volume2, ChevronDown, ChevronUp } from 'lucide-react';
 import { renderMarkdown } from '../utils/markdownRenderer';
+import { stripMarkdown } from '../utils/stripMarkdown';
 
 export const PastPaperQuestion = ({ question, onSpeak }) => {
   const [showAnswer, setShowAnswer] = useState(false);
 
   const handleSpeak = () => {
     if (onSpeak) {
-      let textToSpeak = `Question: ${question.question}`;
+      let textToSpeak = `Question: ${stripMarkdown(question.question)}`;
       if (question.sampleAnswer) {
-        textToSpeak += `. Sample Answer: ${question.sampleAnswer}`;
+        textToSpeak += `. Sample Answer: ${stripMarkdown(question.sampleAnswer)}`;
       }
       onSpeak(textToSpeak);
     }
