@@ -1,15 +1,26 @@
-import React, { useMemo } from 'react';
+'use client';
+
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Home, FileText, Award, ArrowRight } from 'lucide-react';
+import { Home, FileText, Award, ArrowRight, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import { Button } from '../components/Button';
 import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { TextToSpeechControls } from '../components/TextToSpeechControls';
 import { useTextToSpeech } from '../hooks/useTextToSpeech';
 
+// Dynamically import PDF viewer with no SSR
+const PDFViewer = dynamic(
+  () => import('../components/PDFViewer'),
+  { ssr: false, loading: () => <div className="text-gray-600 p-8">Loading PDF viewer...</div> }
+);
+
 export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => {
   const currentIndex = units.findIndex((u) => u.id === unit.id);
   const hasNextUnit = currentIndex < units.length - 1;
+  const [showPDF, setShowPDF] = useState(false);
+  const [numPages, setNumPages] = useState(null);
 
   const { speak, pause, resume, stop, isSpeaking, isPaused, isSupported } = useTextToSpeech();
 
@@ -21,6 +32,52 @@ export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => 
 
     return `${unit.title}. ${unit.summary}. Key Takeaways: ${takeawaysText}`;
   }, [unit]);
+
+  // Parse page range to get start and end pages
+  const getPageRange = (pageRange) => {
+    if (!pageRange) return { start: 1, end: 1 };
+
+    // Handle "All" pages - we'll need to get the total from the PDF
+    if (pageRange.toLowerCase() === 'all' || pageRange.toLowerCase() === 'cheat sheet') {
+      return { start: 1, end: 999 }; // Large number, will be limited by actual PDF pages
+    }
+
+    // Extract numbers from formats like "1-5", "10-15", "20"
+    const matches = pageRange.match(/\d+/g);
+    if (!matches) return { start: 1, end: 1 };
+
+    const start = parseInt(matches[0], 10);
+    const end = matches.length > 1 ? parseInt(matches[1], 10) : start;
+    return { start, end };
+  };
+
+  const pageRange = getPageRange(unit.pages);
+  const [currentPage, setCurrentPage] = useState(pageRange.start);
+
+  // Adjust end page based on actual PDF page count
+  const actualEndPage = numPages ? Math.min(pageRange.end, numPages) : pageRange.end;
+
+  // Reset current page when unit changes or PDF is shown
+  const handleShowPDF = () => {
+    setCurrentPage(pageRange.start);
+    setShowPDF(!showPDF);
+  };
+
+  const goToPreviousPage = () => {
+    if (currentPage > pageRange.start) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < actualEndPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handleDocumentLoadSuccess = ({ numPages: loadedPages }) => {
+    setNumPages(loadedPages);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 p-8">
@@ -81,13 +138,92 @@ export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => 
             </div>
 
             <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-              <p className="text-sm text-gray-600">
-                <span className="font-semibold">PDF Reference:</span> Pages{' '}
-                <span className="font-mono bg-white px-2 py-1 rounded">{unit.pages}</span>
-              </p>
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold">PDF Reference:</span> Pages{' '}
+                  <span className="font-mono bg-white px-2 py-1 rounded">{unit.pages}</span>
+                </p>
+                <Button
+                  onClick={handleShowPDF}
+                  variant={showPDF ? "secondary" : "primary"}
+                  size="sm"
+                  icon={BookOpen}
+                >
+                  {showPDF ? 'Hide' : 'View'} Lecture Notes
+                </Button>
+              </div>
             </div>
           </div>
         </Card>
+
+        {showPDF && (
+          <Card className="mb-6">
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold text-gray-700 mb-2 flex items-center">
+                <BookOpen className="w-6 h-6 mr-2 text-green-500" />
+                Lecture Notes - Pages {unit.pages}
+              </h3>
+              <div className="bg-blue-50 border-l-4 border-blue-500 p-3 rounded mb-4">
+                <p className="text-sm text-blue-800 font-medium">
+                  📖 This unit covers pages {unit.pages} of the lecture notes
+                </p>
+              </div>
+
+              {/* Page Navigation Controls */}
+              <div className="flex items-center justify-between bg-gray-50 p-4 rounded-lg mb-4">
+                <Button
+                  onClick={goToPreviousPage}
+                  variant="secondary"
+                  size="sm"
+                  icon={ChevronLeft}
+                  disabled={currentPage <= pageRange.start}
+                >
+                  Previous
+                </Button>
+
+                <div className="text-center">
+                  <div className="text-sm text-gray-600">Page</div>
+                  <div className="text-2xl font-bold text-gray-800">
+                    {currentPage}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {numPages ? `of ${pageRange.start}-${actualEndPage}` : 'Loading...'}
+                  </div>
+                </div>
+
+                <Button
+                  onClick={goToNextPage}
+                  variant="secondary"
+                  size="sm"
+                  icon={ChevronRight}
+                  disabled={currentPage >= actualEndPage}
+                >
+                  Next
+                </Button>
+              </div>
+            </div>
+
+            {/* PDF Viewer */}
+            <div className="relative w-full bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center" style={{ minHeight: '800px' }}>
+              <PDFViewer
+                pageNumber={currentPage}
+                pdfFile={unit.pdfFile || 'lecture_notes.pdf'}
+                onDocumentLoadSuccess={handleDocumentLoadSuccess}
+              />
+            </div>
+
+            <div className="mt-4 text-center">
+              <a
+                href={`/zcas-ml-study-guide/${unit.pdfFile || 'lecture_notes.pdf'}#page=${pageRange.start}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-800 underline text-sm"
+              >
+                Open full PDF in new tab
+              </a>
+            </div>
+          </Card>
+        )}
 
         <div className="flex gap-4">
           <Button

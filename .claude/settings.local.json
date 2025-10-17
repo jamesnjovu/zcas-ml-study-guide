@@ -4,10 +4,8 @@
       "Bash(npm install:*)",
       "Bash(npm run dev:*)",
       "Bash(npm run build:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)",
-      "Bash(git push:*)",
-      "Bash(git reset:*)"
+      "Bash(npm run deploy:*)",
+      "Bash(node -e:*)"
     ],
     "deny": [],
     "ask": []

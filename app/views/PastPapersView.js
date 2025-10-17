@@ -16,7 +16,7 @@ export const PastPapersView = ({ pastPapers, onSelectPaper, onGoHome }) => {
             Past Examination Papers
           </h1>
           <p className="text-lg text-gray-600">
-            Practice with previous years' exam questions and sample answers
+            Practice with previous years&apos; exam questions and sample answers
           </p>
         </header>
 

@@ -8,9 +8,10 @@ export const PastPaperQuestion = ({ question, onSpeak }) => {
 
   const handleSpeak = () => {
     if (onSpeak) {
-      const textToSpeak = showAnswer
-        ? `Question: ${question.question}. Sample Answer: ${question.sampleAnswer}`
-        : `Question: ${question.question}`;
+      let textToSpeak = `Question: ${question.question}`;
+      if (question.sampleAnswer) {
+        textToSpeak += `. Sample Answer: ${question.sampleAnswer}`;
+      }
       onSpeak(textToSpeak);
     }
   };

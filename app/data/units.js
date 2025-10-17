@@ -3,6 +3,7 @@ export const units = [
     id: 1,
     title: "Introduction to Machine Learning",
     pages: "1-31",
+    pdfFile: "lecture_notes.pdf",
     summary:
       "This unit introduces the foundations of machine learning, covering key concepts like data types, features, and labels. It explores the main ML paradigms including supervised, unsupervised, and reinforcement learning, along with perspectives and ethical issues.",
     keyTakeaways: [
@@ -2022,7 +2023,8 @@ export const units = [
   {
     id: 21,
     title: "Python Programming Fundamentals",
-    pages: "Cheat Sheet",
+    pages: "All",
+    pdfFile: "beginners_python_cheat_sheet_pcc_all.pdf",
     summary:
       "This unit covers essential Python programming concepts including variables, data types, lists, dictionaries, control flow, functions, classes, file handling, and exception handling. It provides a comprehensive foundation for Python programming with practical examples and best practices.",
     keyTakeaways: [

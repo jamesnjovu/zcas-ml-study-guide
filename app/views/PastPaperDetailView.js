@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Home, ArrowLeft, FileText, Calendar } from 'lucide-react';
+import { Home, ArrowLeft, FileText, Calendar, Volume2 } from 'lucide-react';
 import { Button } from '../components/Button';
 import { PastPaperQuestion } from '../components/PastPaperQuestion';
 import { TextToSpeechControls } from '../components/TextToSpeechControls';
@@ -8,7 +8,7 @@ import { useTextToSpeech } from '../hooks/useTextToSpeech';
 import { renderMarkdown } from '../utils/markdownRenderer';
 
 export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
-  const { speak, pause, resume, stop, isSpeaking, isPaused } = useTextToSpeech();
+  const { speak, pause, resume, stop, isSpeaking, isPaused, isSupported } = useTextToSpeech();
 
   const fullText = useMemo(() => {
     if (!paper) return '';
@@ -20,10 +20,29 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
       if (section.mandatory) {
         text += 'This section is mandatory. ';
       }
+      if (section.introText) {
+        text += `${section.introText}. `;
+      }
 
-      section.questions.forEach((question, index) => {
-        text += `Question ${index + 1}: ${question.question}. `;
-        text += `Sample Answer: ${question.sampleAnswer}. `;
+      section.questions.forEach((question) => {
+        if (question.isParentQuestion) {
+          if (question.question) {
+            text += `Question ${question.questionNumber}: ${question.question}. `;
+          }
+          if (question.subQuestions) {
+            question.subQuestions.forEach((subQuestion) => {
+              text += `Part ${subQuestion.questionNumber}: ${subQuestion.question}. `;
+              if (subQuestion.sampleAnswer) {
+                text += `Sample Answer: ${subQuestion.sampleAnswer}. `;
+              }
+            });
+          }
+        } else {
+          text += `Question ${question.questionNumber}: ${question.question}. `;
+          if (question.sampleAnswer) {
+            text += `Sample Answer: ${question.sampleAnswer}. `;
+          }
+        }
       });
     });
 
@@ -96,6 +115,9 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
               onStop={stop}
               isSpeaking={isSpeaking}
               isPaused={isPaused}
+              isSupported={isSupported}
+              text={fullText}
+              label="Read Entire Paper"
             />
           </div>
         </header>
@@ -136,18 +158,58 @@ export const PastPaperDetailView = ({ paper, onGoBack, onGoHome }) => {
                       <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
                         {question.question && (
                           <div className="mb-4">
-                            <h3 className="text-xl font-bold text-blue-900 mb-3">
-                              Question {question.questionNumber}
-                            </h3>
+                            <div className="flex items-start justify-between gap-4 mb-3">
+                              <h3 className="text-xl font-bold text-blue-900">
+                                Question {question.questionNumber}
+                              </h3>
+                              <button
+                                onClick={() => {
+                                  let text = `Question ${question.questionNumber}: ${question.question}. `;
+                                  if (question.subQuestions) {
+                                    question.subQuestions.forEach((subQ) => {
+                                      text += `Part ${subQ.questionNumber}: ${subQ.question}. `;
+                                      if (subQ.sampleAnswer) {
+                                        text += `Sample Answer: ${subQ.sampleAnswer}. `;
+                                      }
+                                    });
+                                  }
+                                  speak(text);
+                                }}
+                                className="flex-shrink-0 p-2 text-purple-600 hover:bg-purple-100 rounded-lg transition-colors"
+                                title="Read entire question with all sub-questions and answers"
+                              >
+                                <Volume2 className="w-5 h-5" />
+                              </button>
+                            </div>
                             <div className="text-gray-700 leading-relaxed">
                               {renderMarkdown(question.question)}
                             </div>
                           </div>
                         )}
                         {!question.question && (
-                          <h3 className="text-xl font-bold text-blue-900 mb-4">
-                            Question {question.questionNumber}
-                          </h3>
+                          <div className="flex items-start justify-between gap-4 mb-4">
+                            <h3 className="text-xl font-bold text-blue-900">
+                              Question {question.questionNumber}
+                            </h3>
+                            <button
+                              onClick={() => {
+                                let text = `Question ${question.questionNumber}. `;
+                                if (question.subQuestions) {
+                                  question.subQuestions.forEach((subQ) => {
+                                    text += `Part ${subQ.questionNumber}: ${subQ.question}. `;
+                                    if (subQ.sampleAnswer) {
+                                      text += `Sample Answer: ${subQ.sampleAnswer}. `;
+                                    }
+                                  });
+                                }
+                                speak(text);
+                              }}
+                              className="flex-shrink-0 p-2 text-purple-600 hover:bg-purple-100 rounded-lg transition-colors"
+                              title="Read all sub-questions and answers"
+                            >
+                              <Volume2 className="w-5 h-5" />
+                            </button>
+                          </div>
                         )}
 
                         {question.subQuestions && (
