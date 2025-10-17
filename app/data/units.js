@@ -2,2024 +2,3259 @@ export const units = [
   {
     id: 1,
     title: "Introduction to Machine Learning",
-    pages: "1-31",
+    pages: "1–15",
     pdfFile: "lecture_notes.pdf",
-    summary:
-      "This unit introduces the foundations of machine learning, covering key concepts like data types, features, and labels. It explores the main ML paradigms including supervised, unsupervised, and reinforcement learning, along with perspectives and ethical issues.",
+    summary: `### Overview
+Machine Learning (ML) is a **subfield of Artificial Intelligence (AI)** that enables computers to learn patterns from data and make predictions or decisions **without explicit programming**. The primary goal of ML is to allow systems to **improve performance over time** through experience.
+
+### Key Concepts
+- **Data:** The foundation of ML, existing as structured (tables), unstructured (text, images), or semi-structured formats.
+- **Features:** Characteristics or measurable properties of the data that are fed into models.
+- **Labels:** In supervised learning, these represent the known outputs or target variables.
+- **Algorithms/Models:** Mathematical methods that learn patterns from data to perform tasks like classification or prediction.
+- **Training:** The process where the model adjusts internal parameters to minimize prediction error.
+- **Validation & Testing:** Ensures the trained model generalizes well to unseen data and avoids overfitting.
+- **Metrics:** Quantitative measures of model performance, such as **Accuracy**, **Precision**, **Recall**, **F1-score**, and **RMSE**.
+- **Hyperparameters:** External configuration settings (e.g., learning rate, number of layers) that guide model training.
+- **Deployment:** Integration of the trained model into a real-world environment to make predictions.
+- **Iterative Process:** Machine learning involves continuous refinement — retraining models as data and requirements evolve.
+
+### Learning Paradigms
+1. **Supervised Learning:** Uses labeled data (features + known outputs) for prediction.
+   - Examples: Linear Regression, Decision Trees, Neural Networks.
+2. **Unsupervised Learning:** Uses unlabeled data to discover hidden patterns or groupings.
+   - Examples: Clustering, Dimensionality Reduction.
+3. **Semi-Supervised Learning:** Mix of labeled and unlabeled data.
+4. **Reinforcement Learning:** Learning by interaction with an environment to maximize rewards (used in robotics, gaming).
+
+### Applications
+Machine learning powers systems such as:
+- **Speech & Image Recognition**
+- **Recommendation Engines** (Netflix, Spotify, Amazon)
+- **Healthcare Diagnostics**
+- **Autonomous Vehicles**
+- **Fraud Detection**
+
+### Ethical & Practical Considerations
+ML systems must consider **bias, fairness, transparency**, and **data quality** to ensure responsible use.
+
+### Example Lifecycle
+1. Collect and preprocess data.
+2. Choose algorithm and split data (train/validate/test).
+3. Train the model.
+4. Evaluate using metrics.
+5. Deploy and monitor performance.`,
     keyTakeaways: [
-      "ML enables computers to learn from data without explicit programming",
-      "Quality and quantity of data are crucial for ML success",
-      "Different learning paradigms suit different problem types",
-      "Ethical considerations and bias mitigation are essential",
+      "Machine Learning is a subset of AI focused on learning from data rather than explicit programming.",
+      "Data quality and representation directly impact model performance.",
+      "Supervised, unsupervised, and reinforcement learning form the main ML paradigms.",
+      "Models require iterative tuning through training, validation, and testing.",
+      "Overfitting occurs when models memorize training data instead of learning patterns.",
+      "Hyperparameters control the learning process and must be tuned carefully.",
+      "Deployment integrates models into production for real-world predictions.",
+      "ML applications range from healthcare to finance, robotics, and entertainment.",
     ],
     quiz: [
       {
-        question: "What is the primary goal of machine learning?",
+        question: "### What is the primary goal of Machine Learning?",
         options: [
+          "To store large amounts of data",
           "To program computers explicitly",
-          "To enable computers to learn from data",
-          "To replace human intelligence",
-          "To store data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Which is NOT a type of machine learning?",
-        options: [
-          "Supervised Learning",
-          "Unsupervised Learning",
-          "Manual Learning",
-          "Reinforcement Learning",
+          "To enable computers to learn and improve from data",
+          "To automate hardware control",
         ],
         correct: 2,
       },
       {
-        question: "What are features in machine learning?",
+        question:
+          "### Which of the following describes *features* in a dataset?",
         options: [
-          "Output labels",
-          "Input characteristics or attributes",
-          "Training algorithms",
-          "Cost functions",
+          "The predicted outputs or targets",
+          "The characteristics or measurable properties of data",
+          "The algorithms used to process data",
+          "The labels assigned during training",
         ],
         correct: 1,
       },
       {
-        question: "What does training data include in supervised learning?",
+        question: "### What type of data does **supervised learning** use?",
         options: [
-          "Only features",
-          "Only labels",
-          "Both features and labels",
-          "Neither",
+          "Only unlabeled data",
+          "Partially labeled data",
+          "Labeled input-output pairs",
+          "Data without features",
         ],
         correct: 2,
       },
       {
-        question: "What is overfitting?",
+        question: "### Which algorithm belongs to unsupervised learning?",
         options: [
-          "Good performance on all data",
-          "Memorizing training data instead of learning",
-          "Model too simple",
-          "Training time too short",
+          "Decision Trees",
+          "Linear Regression",
+          "Clustering",
+          "Logistic Regression",
+        ],
+        correct: 2,
+      },
+      {
+        question: "### What is overfitting?",
+        options: [
+          "When a model performs well on new data",
+          "When a model memorizes training data but fails on unseen data",
+          "When a model uses too few features",
+          "When the learning rate is too high",
         ],
         correct: 1,
       },
       {
-        question: "Common metric for classification tasks?",
+        question:
+          "### Which of these metrics is commonly used for classification tasks?",
         options: [
-          "Mean Squared Error",
-          "RMSE",
+          "Root Mean Squared Error (RMSE)",
           "Accuracy and F1-score",
-          "Standard Deviation",
+          "R-squared",
+          "Mean Absolute Error",
+        ],
+        correct: 1,
+      },
+      {
+        question: "### What is the purpose of validation data?",
+        options: [
+          "Used for training only",
+          "Used to tune hyperparameters and check overfitting",
+          "Used for deployment",
+          "Used to collect raw data",
+        ],
+        correct: 1,
+      },
+      {
+        question: "### In reinforcement learning, what drives learning?",
+        options: [
+          "Manual labeling",
+          "Supervised datasets",
+          "Reward signals from environment interactions",
+          "Random weight updates",
         ],
         correct: 2,
       },
       {
-        question: "Role of validation data?",
+        question: "### Which is a correct example of a **hyperparameter**?",
         options: [
-          "Train the model",
-          "Evaluate and detect overfitting",
-          "Store results",
-          "Increase dataset size",
+          "Predicted label values",
+          "Learning rate",
+          "Training data sample",
+          "Validation accuracy",
         ],
         correct: 1,
       },
       {
-        question: "Key ethical concern in ML?",
-        options: [
-          "Processing speed",
-          "Bias and fairness",
-          "Memory usage",
-          "Code complexity",
-        ],
-        correct: 1,
-      },
-      {
-        question: "What is concept learning?",
-        options: [
-          "Learning programming",
-          "Acquiring and generalizing concepts from examples",
-          "Learning ML tools",
-          "Memorizing algorithms",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Instance-based learning stores?",
-        options: [
-          "Only rules",
-          "Specific instances in memory",
-          "Nothing",
-          "Only formulas",
-        ],
-        correct: 1,
+        question: "### Which step ensures that a model can handle unseen data?",
+        options: ["Training", "Validation", "Testing", "Feature scaling"],
+        correct: 2,
       },
     ],
   },
   {
     id: 2,
-    title: "Related Areas & Applications of ML",
-    pages: "44-90",
-    summary:
-      "This unit explores related areas of machine learning including deep learning, NLP, computer vision, and reinforcement learning. It covers diverse applications across industries and introduces popular ML software tools and frameworks.",
+    title: "Perspectives and Issues in Machine Learning",
+    pages: "16–30",
+    pdfFile: "lecture_notes.pdf",
+    summary: `### Overview
+Machine Learning (ML) has transformed industries with automation, prediction, and data-driven insights. However, it introduces **critical challenges** — such as bias, fairness, interpretability, transparency, privacy, and ethical concerns — that require both technical and societal solutions.
+
+### Perspectives
+#### 1. Technological Advancements
+ML drives innovation by automating repetitive tasks, improving prediction accuracy, and enabling intelligent systems.
+
+#### 2. Data-Driven Insights
+Organizations use ML to uncover hidden insights from massive datasets, supporting better decisions and personalized experiences.
+
+#### 3. Personalization
+From recommendations to precision medicine, ML provides **context-aware, user-specific experiences**.
+
+#### 4. Automation & Efficiency
+ML minimizes human effort in processes such as customer support, logistics, and manufacturing.
+
+#### 5. Scientific Discovery
+ML accelerates progress in genomics, physics, and material science by analyzing complex data relationships.
+
+### Issues and Challenges
+1. **Bias and Fairness** — Unbalanced or biased datasets can produce unfair models.
+2. **Interpretability** — Deep models can become black boxes, hard to explain.
+3. **Data Privacy** — Sensitive data requires secure handling.
+4. **Data Quality** — Garbage in, garbage out — data drives outcomes.
+5. **Overfitting** — Weak generalization to unseen data.
+6. **Ethical Considerations** — AI decisions can impact human lives.
+7. **Transparency** — Understanding how a model makes decisions is essential.
+8. **Resource Intensity** — Deep learning consumes high energy and compute.
+9. **Domain Knowledge** — Lacking context can cause mispredictions.
+10. **Job Displacement** — Automation can replace human roles.
+11. **Governance & Regulation** — Needed for fairness and accountability.
+
+### Responsible Development
+Ethical AI requires cooperation between **researchers, policymakers, and technologists**, ensuring fairness, transparency, and sustainability.`,
     keyTakeaways: [
-      "Deep learning uses neural networks with multiple layers",
-      "NLP enables computers to understand human language",
-      "Computer vision interprets visual information from images/videos",
-      "ML has wide-ranging applications from healthcare to autonomous vehicles",
+      "Machine learning offers transformative benefits but introduces ethical and societal challenges.",
+      "Bias in data leads to unfair predictions — fairness and equity must be prioritized.",
+      "Interpretability and transparency are vital for accountability and trust.",
+      "Data privacy must be safeguarded using secure and ethical practices.",
+      "High-quality, diverse datasets are essential for robust and generalizable models.",
+      "Overfitting reduces a model’s ability to perform on unseen data.",
+      "ML can increase automation but may also contribute to job displacement.",
+      "Energy consumption and resource use in deep models raise environmental concerns.",
+      "Legal and regulatory frameworks are critical to guide responsible AI adoption.",
+      "Collaboration between technologists, ethicists, and policymakers ensures responsible innovation.",
     ],
     quiz: [
       {
-        question: "Deep learning is a subset of?",
+        question:
+          "### What is one of the main benefits of machine learning from a technological perspective?",
         options: [
-          "Data Science",
-          "Machine Learning",
-          "Statistics",
-          "Programming",
+          "It reduces access to data.",
+          "It automates tasks and improves decision-making.",
+          "It replaces human intelligence completely.",
+          "It limits scalability of computation.",
         ],
         correct: 1,
       },
       {
-        question: "Which library is NOT mentioned for Python ML?",
-        options: ["TensorFlow", "PyTorch", "scikit-learn", "MATLAB"],
-        correct: 3,
-      },
-      {
-        question: "NLP stands for?",
+        question:
+          "### Which of the following best defines *bias* in machine learning?",
         options: [
-          "Natural Language Processing",
-          "New Learning Protocol",
-          "Neural Layer Processing",
-          "Numeric Logic Programming",
+          "A mathematical adjustment to increase accuracy.",
+          "Systematic errors introduced by unrepresentative data or assumptions.",
+          "A random variation in model outputs.",
+          "The process of making models faster.",
         ],
-        correct: 0,
+        correct: 1,
       },
       {
-        question: "Computer vision deals with?",
+        question: "### Why is interpretability important in ML models?",
         options: [
-          "Audio data",
-          "Text data",
-          "Images and videos",
-          "Time series",
+          "Because it increases computation time.",
+          "Because it helps users understand and trust predictions.",
+          "Because it simplifies the algorithm mathematically.",
+          "Because it reduces dataset size.",
+        ],
+        correct: 1,
+      },
+      {
+        question: "### What is **differential privacy** used for?",
+        options: [
+          "Encrypting model parameters.",
+          "Protecting individual data while performing analysis.",
+          "Improving accuracy through large datasets.",
+          "Reducing model training time.",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "### Which issue arises when ML models consume excessive computational resources?",
+        options: [
+          "Model simplicity",
+          "Data leakage",
+          "Environmental and energy concerns",
+          "Reduced interpretability",
         ],
         correct: 2,
-      },
-      {
-        question: "Which is an ML application in healthcare?",
-        options: ["Gaming", "Medical diagnostics", "Social media", "Shopping"],
-        correct: 1,
-      },
-      {
-        question: "Transfer learning involves?",
-        options: [
-          "Creating new models",
-          "Transferring knowledge between tasks",
-          "Deleting old models",
-          "Random training",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Keras runs on top of?",
-        options: ["PyTorch", "TensorFlow", "R", "Excel"],
-        correct: 1,
-      },
-      {
-        question: "Which area uses sentiment analysis?",
-        options: ["Computer Vision", "NLP", "Robotics", "Gaming"],
-        correct: 1,
-      },
-      {
-        question: "Reinforcement learning agents learn through?",
-        options: [
-          "Labeled data",
-          "Trial and error",
-          "Memorization",
-          "Random selection",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Which is used for data visualization?",
-        options: ["NumPy", "Matplotlib", "TensorFlow", "Keras"],
-        correct: 1,
       },
     ],
   },
   {
     id: 3,
-    title: "Supervised Learning & Classification",
-    pages: "91-104",
-    summary:
-      "This unit covers supervised learning fundamentals, including both regression and classification techniques. It explains how models are trained using labeled data and covers algorithms like decision trees, logistic regression, and SVM.",
+    title: "Concept Learning",
+    pages: "31–42",
+    pdfFile: "lecture_notes.pdf",
+    summary: `### Overview
+**Concept learning** is a foundational process in both **machine learning** and **cognitive science**.  
+It refers to a model’s ability to **acquire, understand, and generalize concepts** or categories from examples and experiences.  
+The primary goal is to enable a system to **classify new, unseen instances** into appropriate categories based on learned patterns.
+
+### Process of Concept Learning
+1. **Data Collection** — Gathering labeled examples or instances representing various categories.
+2. **Feature Extraction** — Identifying the most relevant characteristics (features) that distinguish categories.
+3. **Training Phase** — Using labeled examples to learn patterns or rules that define each concept.
+4. **Generalization** — Applying learned rules to classify new, unseen examples correctly.
+5. **Testing & Evaluation** — Measuring model accuracy using unseen data (test sets) and metrics like **accuracy**, **precision**, **recall**, and **F1-score**.
+6. **Concept Evolution** — Updating learned concepts when new data introduces variations or exceptions.
+
+### Types of Concept Learning
+#### 1. Inductive Learning
+- Involves inferring **general rules from specific examples**.
+- Example: Observing that several birds can fly → generalizing “birds can fly.”
+- Used in most machine learning models.
+
+#### 2. Deductive Learning
+- Derives **specific examples from general rules**.
+- Example: Knowing “all mammals are warm-blooded” → deducing “a whale is warm-blooded.”
+
+#### 3. Abductive Learning
+- Forming **hypotheses** that best explain observed data.
+- Often used in diagnostic systems (e.g., medical diagnosis).
+
+#### 4. Instance-Based Learning
+- Instead of learning abstract rules, this approach stores **specific examples** in memory.
+- When a new instance appears, it is compared against stored examples to make a decision.
+- Examples: *k-Nearest Neighbors (kNN)*, *Case-Based Reasoning.*
+
+### Applications
+Concept learning supports key ML tasks:
+- **Image recognition** (e.g., classifying animals or objects)
+- **Natural language processing** (e.g., word categorization)
+- **Medical diagnostics** (classifying symptoms into diseases)
+- **Recommendation systems** (grouping user preferences)
+- **Fraud detection and anomaly detection**
+
+### Importance
+Concept learning is what allows ML systems to **mimic human-like categorization** — identifying, organizing, and generalizing knowledge from experiences.  
+It bridges **data-driven learning** and **symbolic reasoning**, improving adaptability and contextual understanding.
+
+---`,
     keyTakeaways: [
-      "Supervised learning uses well-labeled training data",
-      "Regression predicts continuous variables",
-      "Classification predicts categorical variables",
-      "Training involves multiple steps from data collection to evaluation",
+      "Concept learning enables systems to form generalizations from examples.",
+      "It involves key stages: data collection, feature extraction, training, generalization, and evaluation.",
+      "Inductive learning generalizes from examples; deductive learning applies known rules.",
+      "Abductive reasoning helps generate hypotheses explaining observed phenomena.",
+      "Instance-based learning classifies by comparing new examples with stored instances.",
+      "Concept learning underlies major ML applications like classification, NLP, and image recognition.",
+      "Concept evolution ensures that models remain adaptable to new patterns.",
+      "Evaluation metrics such as accuracy, precision, and recall measure concept learning effectiveness.",
     ],
     quiz: [
       {
-        question: "Supervised learning requires?",
-        options: ["Unlabeled data", "Labeled data", "No data", "Random data"],
-        correct: 1,
-      },
-      {
-        question: "Classification is used when output is?",
-        options: ["Continuous", "Categorical", "Infinite", "Unknown"],
-        correct: 1,
-      },
-      {
-        question: "Which is a classification algorithm?",
-        options: ["Linear Regression", "Random Forest", "K-means", "PCA"],
-        correct: 1,
-      },
-      {
-        question: "First step in supervised learning?",
+        question: "### What is the main objective of concept learning?",
         options: [
-          "Test model",
-          "Determine training dataset type",
-          "Deploy model",
-          "Collect money",
+          "To memorize all training examples exactly.",
+          "To generalize concepts from examples for classifying new instances.",
+          "To optimize neural network architectures.",
+          "To cluster data without supervision.",
         ],
         correct: 1,
       },
       {
-        question: "Logistic regression is used for?",
+        question:
+          "### Which step involves identifying relevant attributes that distinguish categories?",
         options: [
-          "Regression",
-          "Classification",
-          "Clustering",
-          "Dimension reduction",
+          "Data Collection",
+          "Feature Extraction",
+          "Generalization",
+          "Testing and Evaluation",
         ],
         correct: 1,
       },
       {
-        question: "What splits data in supervised learning?",
+        question:
+          "### What kind of learning infers general rules from specific examples?",
         options: [
-          "Training, test, validation sets",
-          "Only training",
-          "Only test",
-          "No split needed",
+          "Deductive Learning",
+          "Inductive Learning",
+          "Abductive Learning",
+          "Instance-Based Learning",
+        ],
+        correct: 1,
+      },
+      {
+        question: "### In **deductive learning**, knowledge flows from:",
+        options: [
+          "Specific to general",
+          "General to specific",
+          "Unsupervised to supervised",
+          "Data to metadata",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "### Which learning type is most useful in diagnostic systems?",
+        options: [
+          "Inductive Learning",
+          "Abductive Learning",
+          "Instance-Based Learning",
+          "Deductive Learning",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "### Which algorithm is an example of instance-based learning?",
+        options: [
+          "Decision Trees",
+          "k-Nearest Neighbors (kNN)",
+          "Neural Networks",
+          "Naive Bayes",
+        ],
+        correct: 1,
+      },
+      {
+        question: "### What is **concept evolution**?",
+        options: [
+          "The process of retraining a model on the same data repeatedly.",
+          "The adaptation of a concept over time as new data introduces variations.",
+          "The deletion of outdated data points.",
+          "The conversion of data into numerical features.",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "### What does the generalization step in concept learning involve?",
+        options: [
+          "Evaluating model performance on test data.",
+          "Using learned concepts to correctly classify unseen data.",
+          "Extracting important features.",
+          "Removing irrelevant data.",
+        ],
+        correct: 1,
+      },
+      {
+        question: "### Why is evaluation important in concept learning?",
+        options: [
+          "It identifies new patterns for labeling data.",
+          "It determines how well the learned concept applies to new examples.",
+          "It increases dataset size.",
+          "It automatically extracts features.",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "### Which metric combination is commonly used for evaluating classification performance?",
+        options: [
+          "Accuracy, Precision, Recall, and F1-score",
+          "Variance, Bias, and Covariance",
+          "ROC, IOU, and Perplexity",
+          "Entropy, Gini, and RMSE",
         ],
         correct: 0,
       },
       {
-        question: "Support Vector Machines are for?",
+        question:
+          "### What is a key difference between inductive and deductive learning?",
         options: [
-          "Regression only",
-          "Classification",
-          "Clustering only",
-          "Visualization",
+          "Inductive goes from data to rules; deductive applies rules to data.",
+          "Deductive uses examples; inductive uses symbolic reasoning.",
+          "Inductive is deterministic; deductive is probabilistic.",
+          "There is no difference.",
+        ],
+        correct: 0,
+      },
+      {
+        question:
+          "### In what way does instance-based learning differ from rule-based learning?",
+        options: [
+          "It discards all training data after training.",
+          "It stores and uses specific instances instead of abstract rules.",
+          "It requires labeled data.",
+          "It cannot generalize to new examples.",
         ],
         correct: 1,
       },
       {
-        question: "A disadvantage of supervised learning?",
+        question:
+          "### What kind of reasoning is abductive learning most similar to?",
         options: [
-          "Too simple",
-          "Requires labeled data",
-          "Too fast",
-          "No accuracy",
+          "Forming hypotheses to explain evidence.",
+          "Deriving conclusions from axioms.",
+          "Memorizing data patterns.",
+          "Eliminating irrelevant variables.",
         ],
-        correct: 1,
-      },
-      {
-        question: "Regression Trees predict?",
-        options: [
-          "Categories",
-          "Continuous values",
-          "Nothing",
-          "Only integers",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Model accuracy is evaluated on?",
-        options: ["Training set", "Test set", "All data", "No data"],
-        correct: 1,
+        correct: 0,
       },
     ],
   },
   {
     id: 4,
-    title: "Linear & Polynomial Regression",
-    pages: "105-166",
-    summary:
-      "This unit provides deep coverage of regression techniques from simple linear regression to polynomial regression and locally weighted linear regression (LWLR). It includes equation derivations, residual analysis, and handling non-linear relationships.",
+    title: "Related Areas of Machine Learning",
+    pages: "43–59",
+    pdfFile: "lecture_notes.pdf",
+    summary: `### Overview
+Machine Learning (ML) is an interdisciplinary field that overlaps with many related areas of computing and data science.  
+These interconnected domains enhance ML’s capabilities, applications, and theoretical foundations — from artificial intelligence to data analysis, optimization, and beyond.
+
+---
+
+### 1. Artificial Intelligence (AI)
+- **AI** is the broader field that encompasses ML.
+- Focuses on building intelligent systems capable of reasoning, perception, planning, and learning.
+- ML is the data-driven component of AI that allows systems to learn from experience rather than rules.
+
+---
+
+### 2. Deep Learning (DL)
+- A **subset of ML** using *multi-layered neural networks* (deep architectures) to model complex relationships.
+- Excels in recognizing patterns from large datasets (e.g., images, text, audio).
+- **Applications:** image recognition, NLP, reinforcement learning, and game AI.
+- Frameworks: TensorFlow, PyTorch, Keras.
+
+---
+
+### 3. Neural Networks (NN)
+- Inspired by the **structure of the human brain**.
+- Composed of layers of interconnected “neurons.”
+- Used for **pattern recognition**, function approximation, and learning complex mappings between inputs and outputs.
+- Basis of modern deep learning.
+
+---
+
+### 4. Data Science
+- The broader discipline involving **data collection, cleaning, exploration, visualization**, and **statistical analysis**.
+- ML algorithms are essential tools in data science for prediction and decision-making.
+- Combines programming, statistics, and domain expertise.
+
+---
+
+### 5. Natural Language Processing (NLP)
+- Focuses on enabling computers to **understand, interpret, and generate human language**.
+- Core tasks:
+  - Sentiment analysis
+  - Text summarization
+  - Machine translation
+  - Named entity recognition
+  - Chatbots and conversational AI
+- NLP combines **linguistics, ML, and deep learning**.
+
+---
+
+### 6. Computer Vision (CV)
+- Enables machines to **interpret and analyze visual data** (images and videos).
+- Applications:
+  - Object and facial recognition
+  - Image segmentation
+  - Gesture recognition
+  - Autonomous navigation
+- Uses **convolutional neural networks (CNNs)** for spatial data understanding.
+
+---
+
+### 7. Reinforcement Learning (RL)
+- Learning via **interaction with an environment**.
+- Agents learn to take actions that **maximize long-term rewards**.
+- Widely used in robotics, gaming (e.g., AlphaGo), and adaptive control systems.
+
+---
+
+### 8. Unsupervised and Semi-Supervised Learning
+- **Unsupervised Learning:** Learns from unlabeled data to find structure (e.g., clustering, dimensionality reduction).
+- **Semi-Supervised Learning:** Combines small amounts of labeled data with large amounts of unlabeled data.
+
+---
+
+### 9. Transfer Learning
+- Involves **reusing knowledge** learned from one task to improve performance on another.
+- Example: Using a pretrained CNN on ImageNet and fine-tuning it for medical image classification.
+- Saves time and computation, especially when labeled data is scarce.
+
+---
+
+### 10. Explainable AI (XAI)
+- Aims to make ML systems **transparent, interpretable, and explainable**.
+- Helps users understand how predictions are made, improving accountability and trust.
+- Crucial for regulated fields like finance, law, and healthcare.
+
+---
+
+### 11. Ethics in AI
+- Addresses **bias, fairness, accountability, and transparency**.
+- Promotes responsible AI development that prioritizes **human values and societal impact**.
+- Involves data governance, privacy protection, and inclusivity.
+
+---
+
+### 12. Bayesian Learning
+- Uses **probabilistic reasoning** for prediction and inference.
+- Incorporates prior knowledge and updates beliefs with new evidence.
+- Ideal for uncertain and dynamic environments.
+
+---
+
+### 13. Causal Inference
+- Focuses on identifying **cause-and-effect relationships** from data.
+- Moves beyond correlation to enable reliable, interpretable decision-making.
+- Important in medicine, economics, and policy analysis.
+
+---
+
+### 14. Optimization
+- Optimization techniques help ML models **minimize loss functions** and tune parameters effectively.
+- Methods include:
+  - Gradient Descent
+  - Stochastic Gradient Descent
+  - Genetic Algorithms
+  - Convex optimization
+- Optimization is fundamental to all model training.
+
+---
+
+### 15. Time Series Analysis
+- Concerned with data indexed over time (e.g., stock prices, weather data, IoT readings).
+- ML models detect patterns, trends, and seasonal variations.
+- Applications: forecasting, anomaly detection, and signal processing.
+
+---
+
+### 16. Quantum Machine Learning (QML)
+- A cutting-edge area combining **quantum computing and ML**.
+- Explores how quantum mechanics can enhance learning efficiency.
+- Promising for solving **high-dimensional, computationally intensive problems**.
+
+---
+
+### Summary
+Together, these related areas extend ML’s reach into various domains — enabling smarter, faster, and more responsible AI systems across science, business, and everyday life.`,
     keyTakeaways: [
-      "Simple linear regression uses y = mx + c equation",
-      "Multiple linear regression handles multiple independent variables",
-      "Polynomial regression captures non-linear patterns",
-      "LWLR adapts to local data patterns dynamically",
+      "Machine learning overlaps with several fields that enhance its capabilities and applications.",
+      "Artificial Intelligence (AI) is the parent discipline of ML.",
+      "Deep learning uses multi-layered neural networks for complex pattern recognition.",
+      "NLP enables computers to understand and generate human language.",
+      "Computer Vision helps machines interpret visual data using convolutional neural networks.",
+      "Reinforcement learning trains agents through interaction and feedback.",
+      "Transfer learning accelerates development by reusing pre-trained models.",
+      "Explainable AI promotes transparency, fairness, and accountability in model behavior.",
+      "Bayesian learning integrates probabilistic reasoning into model inference.",
+      "Optimization techniques form the mathematical foundation of all ML training.",
     ],
     quiz: [
       {
-        question: "In y = mx + c, what is 'c'?",
-        options: ["Slope", "Intercept", "Error", "Prediction"],
-        correct: 1,
-      },
-      {
-        question: "Dependent variable is denoted by?",
-        options: ["x", "y", "m", "c"],
-        correct: 1,
-      },
-      {
-        question: "Multiple linear regression has multiple?",
-        options: ["Outputs", "Independent variables", "Errors", "Models"],
-        correct: 1,
-      },
-      {
-        question: "Best-fit line has lowest?",
+        question:
+          "### What is the relationship between AI and Machine Learning?",
         options: [
-          "Slope",
-          "Intercept",
-          "Sum of squared errors",
-          "Number of points",
-        ],
-        correct: 2,
-      },
-      {
-        question: "Polynomial regression degree refers to?",
-        options: [
-          "Temperature",
-          "Highest power of variables",
-          "Number of samples",
-          "Time",
-        ],
-        correct: 1,
-      },
-      {
-        question: "When should polynomial regression be used?",
-        options: [
-          "Always",
-          "For non-linear data",
-          "For linear data only",
-          "Never",
-        ],
-        correct: 1,
-      },
-      {
-        question: "LWLR assigns weights based on?",
-        options: [
-          "Random selection",
-          "Proximity to target point",
-          "Data size",
-          "Color",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Residual is the difference between?",
-        options: [
-          "x and y",
-          "Actual and predicted values",
-          "Training and test",
-          "Mean and median",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Polynomial regression can cause?",
-        options: [
-          "Underfitting only",
-          "Overfitting with high degrees",
-          "No issues",
-          "Faster training",
-        ],
-        correct: 1,
-      },
-      {
-        question: "LWLR is useful for?",
-        options: [
-          "Time series",
-          "Static patterns",
-          "Locally varying patterns",
-          "Constant data",
-        ],
-        correct: 2,
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Numerical Optimization & Gradient Descent",
-    pages: "167-187",
-    summary:
-      "This unit focuses on numerical optimization techniques essential for training ML models. It covers gradient descent variants including batch, stochastic, and mini-batch, explaining cost functions, learning rates, and convergence.",
-    keyTakeaways: [
-      "Optimization finds best parameters by minimizing cost function",
-      "Gradient descent moves opposite to gradient direction",
-      "Learning rate controls optimization step size",
-      "Different GD variants offer speed vs accuracy tradeoffs",
-    ],
-    quiz: [
-      {
-        question: "Gradient descent minimizes?",
-        options: ["Features", "Cost function", "Data size", "Time"],
-        correct: 1,
-      },
-      {
-        question: "Learning rate controls?",
-        options: [
-          "Data quality",
-          "Step size",
-          "Number of features",
-          "Model type",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Batch GD uses how many samples per update?",
-        options: ["One", "Random", "All training data", "None"],
-        correct: 2,
-      },
-      {
-        question: "Stochastic GD uses how many samples?",
-        options: ["All", "One at a time", "Half", "None"],
-        correct: 1,
-      },
-      {
-        question: "High learning rate causes?",
-        options: [
-          "Slow convergence",
-          "Overshooting",
-          "No effect",
-          "Better accuracy",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Cost function measures?",
-        options: ["Speed", "Error/difference", "Data size", "Features"],
-        correct: 1,
-      },
-      {
-        question: "Gradient points toward?",
-        options: ["Minimum", "Maximum", "Random direction", "Origin"],
-        correct: 1,
-      },
-      {
-        question: "Convergence means?",
-        options: [
-          "Starting training",
-          "Reaching optimal point",
-          "Adding data",
-          "Deleting model",
-        ],
-        correct: 1,
-      },
-      {
-        question: "SGD advantage over batch GD?",
-        options: [
-          "Always better",
-          "Faster updates",
-          "Always accurate",
-          "Uses more memory",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Hypothesis in ML represents?",
-        options: [
-          "Data",
-          "Model's prediction function",
-          "Error",
-          "Learning rate",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "Kernel Methods & Support Vector Machines",
-    pages: "188-308",
-    summary:
-      "This unit covers kernel methods and Support Vector Machines in depth. It explains kernel functions (linear, polynomial, RBF, Laplace), the kernel trick, hyperplanes, margins, and how SVMs handle both linearly and non-linearly separable data.",
-    keyTakeaways: [
-      "Kernels transform data to higher-dimensional spaces",
-      "SVMs find optimal hyperplane maximizing margin",
-      "Support vectors are critical boundary points",
-      "Different kernels (linear, polynomial, RBF) suit different patterns",
-    ],
-    quiz: [
-      {
-        question: "Kernel function must satisfy?",
-        options: [
-          "Mercer's condition",
-          "Newton's law",
-          "No condition",
-          "Random properties",
+          "ML is a subset of AI.",
+          "AI is a subset of ML.",
+          "They are unrelated fields.",
+          "ML replaces AI completely.",
         ],
         correct: 0,
       },
       {
-        question: "Linear kernel is?",
-        options: ["Dot product", "Exponential", "Logarithmic", "Square root"],
-        correct: 0,
-      },
-      {
-        question: "RBF kernel is also called?",
-        options: ["Linear", "Polynomial", "Gaussian kernel", "Square kernel"],
-        correct: 2,
-      },
-      {
-        question: "Hyperplane in SVM is?",
-        options: ["Data point", "Decision boundary", "Kernel", "Training set"],
-        correct: 1,
-      },
-      {
-        question: "Margin in SVM is?",
+        question: "### What distinguishes deep learning from traditional ML?",
         options: [
-          "Error rate",
-          "Distance between support vectors and hyperplane",
-          "Number of features",
-          "Training time",
+          "It relies on rule-based logic.",
+          "It uses multi-layer neural networks to learn complex patterns.",
+          "It does not require any data.",
+          "It only handles numerical data.",
         ],
         correct: 1,
       },
       {
-        question: "SVM goal?",
+        question:
+          "### Which field focuses on enabling machines to process and generate human language?",
         options: [
-          "Minimize margin",
-          "Maximize margin",
-          "Ignore margin",
-          "Delete data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Non-linear SVM uses?",
-        options: ["No kernels", "Kernel trick", "Only lines", "Circles"],
-        correct: 1,
-      },
-      {
-        question: "Support vectors are?",
-        options: [
-          "All points",
-          "Points closest to boundary",
-          "Far points",
-          "Random points",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Polynomial kernel degree controls?",
-        options: [
-          "Speed",
-          "Complexity of decision boundary",
-          "Data size",
-          "Color",
-        ],
-        correct: 1,
-      },
-      {
-        question: "SVM works well for?",
-        options: [
-          "Only low dimensions",
-          "High-dimensional data",
-          "No data",
-          "Only text",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 7,
-    title: "Decision Trees",
-    pages: "197-212",
-    summary:
-      "This unit explains decision tree algorithms for classification and regression. It covers tree components (root, leaf, branch nodes), splitting criteria (information gain, Gini index, entropy), pruning techniques, and decision tree advantages and limitations.",
-    keyTakeaways: [
-      "Decision trees use hierarchical if-then-else rules",
-      "Information gain and Gini index guide optimal splits",
-      "Pruning removes unnecessary branches to prevent overfitting",
-      "Trees are interpretable but can overfit without regularization",
-    ],
-    quiz: [
-      {
-        question: "Root node represents?",
-        options: ["Output", "Entire dataset", "Error", "Leaf"],
-        correct: 1,
-      },
-      {
-        question: "Leaf node is?",
-        options: [
-          "Starting point",
-          "Final decision/output",
-          "Middle node",
-          "Root",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Splitting divides node based on?",
-        options: ["Random choice", "Attribute values", "Time", "Color"],
-        correct: 1,
-      },
-      {
-        question: "Information gain measures?",
-        options: ["Time", "Reduction in entropy/uncertainty", "Size", "Speed"],
-        correct: 1,
-      },
-      {
-        question: "Entropy measures?",
-        options: ["Speed", "Randomness/impurity", "Size", "Color"],
-        correct: 1,
-      },
-      {
-        question: "Gini index measures?",
-        options: ["Speed", "Impurity", "Time", "Size"],
-        correct: 1,
-      },
-      {
-        question: "Pruning helps to?",
-        options: [
-          "Grow tree",
-          "Prevent overfitting",
-          "Add noise",
-          "Delete data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Decision tree advantage?",
-        options: [
-          "Always accurate",
-          "Easy to understand",
-          "Never overfits",
-          "Requires no data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "ASM stands for?",
-        options: [
-          "Automatic System Model",
-          "Attribute Selection Measure",
-          "Advanced Statistical Method",
-          "Applied Science Mathematics",
-        ],
-        correct: 1,
-      },
-      {
-        question: "CART algorithm uses?",
-        options: [
-          "Information gain",
-          "Gini index",
-          "Random selection",
-          "No criterion",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 8,
-    title: "K-Nearest Neighbors",
-    pages: "213-228",
-    summary:
-      "This unit covers the K-Nearest Neighbors algorithm, a non-parametric, lazy learning method for classification and regression. It explains the algorithm workflow, distance metrics (Euclidean), choosing K value, and KNN advantages and disadvantages.",
-    keyTakeaways: [
-      "KNN classifies based on similarity to K nearest neighbors",
-      "Uses distance metrics like Euclidean distance",
-      "Non-parametric lazy learner stores all training data",
-      "Simple to implement but computationally expensive for large datasets",
-    ],
-    quiz: [
-      {
-        question: "KNN is a type of?",
-        options: [
-          "Supervised learning",
-          "Unsupervised learning",
-          "Reinforcement learning",
-          "No learning",
-        ],
-        correct: 0,
-      },
-      {
-        question: "KNN is called lazy learner because?",
-        options: [
-          "It's slow",
-          "Doesn't learn during training",
-          "Always sleeps",
-          "Uses no data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "K in KNN represents?",
-        options: ["Constant", "Number of neighbors", "Kernel", "Key"],
-        correct: 1,
-      },
-      {
-        question: "Common distance metric in KNN?",
-        options: ["Manhattan", "Euclidean", "Cosine", "All of these"],
-        correct: 3,
-      },
-      {
-        question: "KNN classification decision based on?",
-        options: [
-          "Random",
-          "Majority vote of K neighbors",
-          "First neighbor",
-          "Last neighbor",
-        ],
-        correct: 1,
-      },
-      {
-        question: "KNN can be used for?",
-        options: [
-          "Classification only",
-          "Regression only",
-          "Both classification and regression",
-          "Neither",
-        ],
-        correct: 2,
-      },
-      {
-        question: "Choosing K value?",
-        options: [
-          "Always 1",
-          "Should be odd for binary classification",
-          "Always 100",
-          "Doesn't matter",
-        ],
-        correct: 1,
-      },
-      {
-        question: "KNN disadvantage?",
-        options: [
-          "Too simple",
-          "Computationally expensive for large datasets",
-          "Too fast",
-          "No accuracy",
-        ],
-        correct: 1,
-      },
-      {
-        question: "KNN stores?",
-        options: [
-          "Nothing",
-          "All training data",
-          "Only K points",
-          "Only errors",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Small K value leads to?",
-        options: [
-          "Underfitting",
-          "Overfitting/noise sensitivity",
-          "No effect",
-          "Better accuracy",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 9,
-    title: "Boosting Algorithms",
-    pages: "229-248",
-    summary:
-      "This unit explains boosting ensemble techniques that convert weak learners into strong learners. It covers AdaBoost, gradient boosting, the sequential training process, and applications. It also discusses boosting benefits, challenges, and real-world uses.",
-    keyTakeaways: [
-      "Boosting combines weak learners into strong classifier",
-      "Sequential training focuses on misclassified examples",
-      "AdaBoost adjusts weights, Gradient Boosting minimizes gradients",
-      "Effective but can overfit and sensitive to outliers",
-    ],
-    quiz: [
-      {
-        question: "Boosting is a type of?",
-        options: [
-          "Single model",
-          "Ensemble learning",
-          "Clustering",
-          "Dimension reduction",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Boosting converts?",
-        options: [
-          "Strong to weak",
-          "Weak learners to strong",
-          "Data to features",
-          "Features to data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Boosting trains models?",
-        options: ["In parallel", "Sequentially", "Randomly", "Never"],
-        correct: 1,
-      },
-      {
-        question: "Boosting focuses on?",
-        options: [
-          "Easy examples",
-          "Misclassified examples",
-          "Random examples",
-          "All equally",
-        ],
-        correct: 1,
-      },
-      {
-        question: "AdaBoost adjusts?",
-        options: [
-          "Learning rate",
-          "Weights of misclassified samples",
-          "Number of trees",
-          "Data size",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Gradient boosting minimizes?",
-        options: ["Time", "Loss function gradients", "Memory", "Features"],
-        correct: 1,
-      },
-      {
-        question: "Boosting advantage?",
-        options: [
-          "Always fast",
-          "Reduces bias and improves accuracy",
-          "Needs no data",
-          "Never overfits",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Boosting challenge?",
-        options: [
-          "Too simple",
-          "Sensitive to outliers",
-          "Too fast",
-          "No parameters",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Boosting used in?",
-        options: [
-          "Only images",
-          "Healthcare, IT, finance",
-          "Only text",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Weak learner is?",
-        options: [
-          "Complex model",
-          "Simple model slightly better than random",
-          "Perfect model",
-          "No model",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 10,
-    title: "Random Forests",
-    pages: "249-263",
-    summary:
-      "This unit covers Random Forest ensemble method that combines multiple decision trees. It explains bagging, feature randomness, voting mechanisms, and how random forests reduce overfitting while maintaining high accuracy across various applications.",
-    keyTakeaways: [
-      "Random forests combine multiple decision trees via bagging",
-      "Each tree trained on random subset with feature randomness",
-      "Predictions made by majority voting (classification) or averaging (regression)",
-      "Reduces overfitting and handles high-dimensional data well",
-    ],
-    quiz: [
-      {
-        question: "Random forest is based on?",
-        options: [
-          "One tree",
-          "Ensemble of decision trees",
-          "Linear models",
-          "Clustering",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Random forest uses which technique?",
-        options: [
-          "Boosting",
-          "Bagging (Bootstrap Aggregating)",
-          "Pruning only",
-          "No technique",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Random forest prediction is by?",
-        options: [
-          "First tree",
-          "Majority voting/averaging",
-          "Last tree",
-          "Random tree",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Random forest reduces?",
-        options: ["Accuracy", "Overfitting", "Speed", "Data"],
-        correct: 1,
-      },
-      {
-        question: "Each tree in RF trained on?",
-        options: ["All data", "Random subset of data", "No data", "Same data"],
-        correct: 1,
-      },
-      {
-        question: "Feature randomness means?",
-        options: [
-          "All features used",
-          "Random subset of features per split",
-          "No features",
-          "One feature only",
-        ],
-        correct: 1,
-      },
-      {
-        question: "RF advantage over single tree?",
-        options: [
-          "Faster",
-          "More accurate and robust",
-          "Simpler",
-          "Less memory",
-        ],
-        correct: 1,
-      },
-      {
-        question: "RF application includes?",
-        options: ["Banking", "Medicine", "Land use", "All of these"],
-        correct: 3,
-      },
-      {
-        question: "RF handles what well?",
-        options: [
-          "Only small data",
-          "Large datasets with high dimensionality",
-          "No data",
-          "Only images",
-        ],
-        correct: 1,
-      },
-      {
-        question: "RF disadvantage?",
-        options: [
-          "Too simple",
-          "Less interpretable than single tree",
-          "Too fast",
-          "No accuracy",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 11,
-    title: "Deep Neural Networks",
-    pages: "264-283",
-    summary:
-      "This unit introduces deep learning and neural network architectures. It covers feedforward, recurrent, and convolutional neural networks, explaining layers, activation functions, backpropagation, and applications in computer vision, NLP, and more.",
-    keyTakeaways: [
-      "Deep learning uses neural networks with multiple hidden layers",
-      "Different architectures (CNN, RNN, DNN) suit different tasks",
-      "Backpropagation and gradient descent train the networks",
-      "Applications include image recognition, speech, and autonomous systems",
-    ],
-    quiz: [
-      {
-        question: "Deep learning is subset of?",
-        options: ["Statistics", "Machine Learning", "Mathematics", "Physics"],
-        correct: 1,
-      },
-      {
-        question: "Neural networks inspired by?",
-        options: ["Computers", "Human brain neurons", "Mathematics", "Physics"],
-        correct: 1,
-      },
-      {
-        question: "Hidden layers are between?",
-        options: ["Input and output", "Two inputs", "Two outputs", "Nowhere"],
-        correct: 0,
-      },
-      {
-        question: "CNN primarily used for?",
-        options: ["Text", "Image classification", "Audio only", "Nothing"],
-        correct: 1,
-      },
-      {
-        question: "RNN is used for?",
-        options: [
-          "Static images",
-          "Sequential data like time series",
-          "Clustering",
-          "Dimensionality",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Feedforward network means?",
-        options: [
-          "Data flows backward",
-          "Data flows forward without cycles",
-          "Random flow",
-          "No flow",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Deep learning requires?",
-        options: [
-          "Small data",
-          "Large amounts of data",
-          "No data",
-          "One sample",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Backpropagation is used for?",
-        options: [
-          "Prediction",
-          "Training by adjusting weights",
-          "Testing",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "DNN application includes?",
-        options: [
-          "Self-driving cars",
-          "Voice assistants",
-          "Image captioning",
-          "All of these",
-        ],
-        correct: 3,
-      },
-      {
-        question: "Deep learning disadvantage?",
-        options: [
-          "Too simple",
-          "Computationally expensive",
-          "Too fast",
-          "Needs no data",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 12,
-    title: "Naive Bayes Classifier",
-    pages: "284-295",
-    summary:
-      "This unit covers Naive Bayes probabilistic classifier based on Bayes' theorem. It explains the naive independence assumption, probability calculations, different Naive Bayes variants (Gaussian, Multinomial, Bernoulli), and applications in text classification.",
-    keyTakeaways: [
-      "Based on Bayes' theorem with independence assumption",
-      "Fast and effective for text classification tasks",
-      "Three main types: Gaussian, Multinomial, Bernoulli",
-      "Works well despite 'naive' feature independence assumption",
-    ],
-    quiz: [
-      {
-        question: "Naive Bayes is based on?",
-        options: [
-          "Newton's law",
-          "Bayes' theorem",
-          "Einstein's theory",
-          "No theorem",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Why is it called 'Naive'?",
-        options: [
-          "It's simple",
-          "Assumes feature independence",
-          "It's old",
-          "No reason",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Naive Bayes is used for?",
-        options: [
-          "Regression only",
-          "Classification",
-          "Clustering only",
+          "Computer Vision",
           "Optimization",
+          "Natural Language Processing (NLP)",
+          "Bayesian Inference",
+        ],
+        correct: 2,
+      },
+      {
+        question:
+          "### Which network type is the foundation of modern deep learning?",
+        options: [
+          "Decision Trees",
+          "Neural Networks",
+          "Markov Models",
+          "Genetic Algorithms",
         ],
         correct: 1,
       },
       {
-        question: "P(A|B) represents?",
+        question: "### What is the main function of **Computer Vision**?",
         options: [
-          "Prior probability",
-          "Posterior probability",
-          "Likelihood",
-          "Evidence",
+          "Analyzing numerical time-series data",
+          "Recognizing and interpreting images and videos",
+          "Understanding natural language",
+          "Predicting user preferences",
         ],
         correct: 1,
       },
       {
-        question: "Gaussian NB assumes features follow?",
+        question: "### What does **Reinforcement Learning** emphasize?",
         options: [
-          "Uniform distribution",
-          "Normal distribution",
-          "Binomial",
-          "No distribution",
+          "Learning by imitation",
+          "Learning by reward and punishment through environment interaction",
+          "Learning from labeled data only",
+          "Learning purely from text data",
         ],
         correct: 1,
       },
       {
-        question: "Multinomial NB used for?",
+        question: "### What is the key advantage of **Transfer Learning**?",
         options: [
-          "Continuous data",
-          "Document classification",
-          "Images only",
-          "Audio only",
+          "It trains models from scratch for every task.",
+          "It allows leveraging previously trained models to save resources.",
+          "It removes the need for labeled data.",
+          "It simplifies neural architectures completely.",
         ],
         correct: 1,
       },
       {
-        question: "Bernoulli NB uses?",
+        question: "### What does Explainable AI (XAI) aim to achieve?",
         options: [
-          "Continuous values",
-          "Boolean/binary variables",
-          "Text only",
-          "Images",
+          "To make AI predictions faster only.",
+          "To make models transparent and interpretable to humans.",
+          "To eliminate all bias automatically.",
+          "To replace training data with rules.",
         ],
         correct: 1,
       },
       {
-        question: "NB is popular for?",
-        options: ["Gaming", "Spam filtering", "Graphics", "Nothing"],
-        correct: 1,
-      },
-      {
-        question: "NB advantage?",
+        question:
+          "### Which area focuses on uncovering cause-and-effect relationships?",
         options: [
-          "Slow training",
-          "Fast and simple",
-          "Complex",
-          "Needs lots of data",
+          "Optimization",
+          "Causal Inference",
+          "Semi-Supervised Learning",
+          "Transfer Learning",
         ],
         correct: 1,
       },
       {
-        question: "NB limitation?",
+        question: "### What is **Bayesian Learning** primarily based on?",
         options: [
-          "Too accurate",
-          "Assumes feature independence",
-          "Too slow",
-          "No limitations",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 13,
-    title: "Model Selection & Evaluation",
-    pages: "309-316",
-    summary:
-      "This unit covers techniques for selecting the best model for a problem. It explains cross-validation, train-test split, bootstrap methods, and evaluation criteria like AIC. It discusses balancing model complexity, performance, and generalization.",
-    keyTakeaways: [
-      "Model selection chooses best model for the problem",
-      "Cross-validation evaluates model on multiple data splits",
-      "AIC provides probabilistic measure for model comparison",
-      "Balance between model complexity and performance is crucial",
-    ],
-    quiz: [
-      {
-        question: "Model selection is?",
-        options: [
-          "Choosing features",
-          "Choosing best model for problem",
-          "Deleting data",
-          "Adding noise",
-        ],
-        correct: 1,
-      },
-      {
-        question: "K-Fold cross-validation splits data into?",
-        options: ["Two parts", "K equal folds", "Random parts", "No split"],
-        correct: 1,
-      },
-      {
-        question: "Train-test split samples?",
-        options: [
-          "With replacement",
-          "Without replacement",
-          "Randomly always",
-          "Never",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Bootstrap samples?",
-        options: ["Without replacement", "With replacement", "Never", "Once"],
-        correct: 1,
-      },
-      {
-        question: "AIC stands for?",
-        options: [
-          "Automated Information Center",
-          "Akaike Information Criterion",
-          "Advanced Integration Code",
-          "None",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Lower AIC indicates?",
-        options: ["Worse model", "Better model", "No difference", "Error"],
-        correct: 1,
-      },
-      {
-        question: "Cross-validation helps prevent?",
-        options: ["Training", "Overfitting", "Testing", "Nothing"],
-        correct: 1,
-      },
-      {
-        question: "Leave-one-out CV leaves out?",
-        options: [
-          "Half data",
-          "One sample per iteration",
-          "All data",
-          "No data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Model selection considers?",
-        options: [
-          "Only accuracy",
-          "Performance, robustness, complexity",
-          "Only speed",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Validation set is used for?",
-        options: [
-          "Training",
-          "Tuning hyperparameters",
-          "Final testing",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 14,
-    title: "Clustering Algorithms",
-    pages: "317-351",
-    summary:
-      "This unit covers unsupervised clustering methods including K-means, hierarchical, density-based (DBSCAN), and distribution-based clustering. It explains cluster formation, distance metrics, applications in customer segmentation, and image analysis.",
-    keyTakeaways: [
-      "Clustering groups similar data points without labels",
-      "K-means partitions data into K clusters using centroids",
-      "Different clustering types suit different data structures",
-      "Applications include customer segmentation and anomaly detection",
-    ],
-    quiz: [
-      {
-        question: "Clustering is what type of learning?",
-        options: [
-          "Supervised",
-          "Unsupervised",
-          "Reinforcement",
-          "Semi-supervised",
-        ],
-        correct: 1,
-      },
-      {
-        question: "K in K-means represents?",
-        options: ["Kernel", "Number of clusters", "Constant", "Key"],
-        correct: 1,
-      },
-      {
-        question: "K-means uses?",
-        options: [
-          "Supervised labels",
-          "Centroids",
-          "Decision trees",
-          "No algorithm",
-        ],
-        correct: 1,
-      },
-      {
-        question: "DBSCAN is?",
-        options: ["Centroid-based", "Density-based", "Model-based", "Random"],
-        correct: 1,
-      },
-      {
-        question: "Hierarchical clustering builds?",
-        options: [
-          "One cluster",
-          "Tree of clusters (dendrogram)",
-          "No structure",
-          "Random clusters",
-        ],
-        correct: 1,
-      },
-      {
-        question: "K-means minimizes?",
-        options: [
-          "Clusters",
-          "Within-cluster variance",
-          "Between-cluster variance",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Clustering application?",
-        options: [
-          "Supervised learning",
-          "Customer segmentation",
-          "Regression",
-          "Classification",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Elbow method helps find?",
-        options: [
-          "Optimal K value",
-          "Best algorithm",
-          "Data quality",
-          "Nothing",
+          "Statistical inference and probabilistic reasoning",
+          "Deterministic rule-based systems",
+          "Manual labeling",
+          "Quantum computation",
         ],
         correct: 0,
       },
       {
-        question: "K-means assumes clusters are?",
-        options: ["Any shape", "Spherical", "Linear", "Random"],
-        correct: 1,
-      },
-      {
-        question: "DBSCAN advantage?",
+        question: "### What is the purpose of optimization in ML?",
         options: [
-          "Needs K value",
-          "Finds arbitrary shaped clusters",
-          "Very slow",
-          "Needs labels",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 15,
-    title: "Dimensionality Reduction",
-    pages: "330-339",
-    summary:
-      "This unit explains techniques to reduce feature dimensions while preserving information. It covers feature selection, feature extraction, PCA (Principal Component Analysis), and the benefits of reducing dimensionality for visualization and computational efficiency.",
-    keyTakeaways: [
-      "Reduces number of features while retaining information",
-      "PCA finds principal components explaining most variance",
-      "Helps with visualization, computation speed, and storage",
-      "Can remove redundant/correlated features",
-    ],
-    quiz: [
-      {
-        question: "Dimensionality reduction reduces?",
-        options: ["Data rows", "Number of features", "Accuracy", "Nothing"],
-        correct: 1,
-      },
-      {
-        question: "PCA finds?",
-        options: ["Clusters", "Principal components", "Labels", "Errors"],
-        correct: 1,
-      },
-      {
-        question: "Dimensionality reduction helps with?",
-        options: [
-          "Adding features",
-          "Visualization and computation",
-          "Data collection",
-          "Labeling",
+          "To visualize data",
+          "To minimize or maximize a model’s objective function",
+          "To store datasets efficiently",
+          "To encode language representations",
         ],
         correct: 1,
       },
       {
-        question: "Feature selection is?",
+        question:
+          "### Which field combines quantum mechanics and machine learning?",
         options: [
-          "Creating new features",
-          "Choosing subset of relevant features",
-          "Deleting all data",
-          "Random process",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Feature extraction?",
-        options: [
-          "Deletes features",
-          "Transforms features to new space",
-          "Does nothing",
-          "Adds noise",
-        ],
-        correct: 1,
-      },
-      {
-        question: "PCA benefit?",
-        options: [
-          "Increases dimensions",
-          "Reduces dimensions while preserving variance",
-          "Adds complexity",
-          "No benefit",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Curse of dimensionality refers to?",
-        options: [
-          "Good performance",
-          "Problems with too many features",
-          "Fast computation",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Forward feature selection?",
-        options: [
-          "Removes features",
-          "Progressively adds best features",
-          "Adds all features",
-          "Random",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Dimensionality reduction disadvantage?",
-        options: [
-          "Too fast",
-          "Possible information loss",
-          "Too simple",
-          "No disadvantage",
-        ],
-        correct: 1,
-      },
-      {
-        question: "PCA components are?",
-        options: [
-          "Random",
-          "Orthogonal vectors",
-          "Original features",
-          "Labels",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 16,
-    title: "Expectation-Maximization Algorithm",
-    pages: "352-362",
-    summary:
-      "This unit covers the EM algorithm for estimating parameters with missing or latent data. It explains the E-step (expectation) and M-step (maximization), convergence properties, and applications in clustering, mixture models, and handling incomplete data.",
-    keyTakeaways: [
-      "EM iteratively estimates parameters with missing data",
-      "E-step computes expected values of latent variables",
-      "M-step maximizes likelihood using E-step results",
-      "Used in Gaussian Mixture Models and missing data problems",
-    ],
-    quiz: [
-      {
-        question: "EM stands for?",
-        options: [
-          "Error Management",
-          "Expectation-Maximization",
-          "Efficient Modeling",
-          "Exact Method",
-        ],
-        correct: 1,
-      },
-      {
-        question: "EM is used when data is?",
-        options: [
-          "Complete",
-          "Missing or has latent variables",
-          "Perfect",
-          "Labeled",
-        ],
-        correct: 1,
-      },
-      {
-        question: "E-step computes?",
-        options: [
-          "Final answer",
-          "Expected values of latent variables",
-          "Error only",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "M-step does what?",
-        options: [
-          "Minimizes parameters",
-          "Maximizes likelihood",
-          "Deletes data",
-          "Adds noise",
-        ],
-        correct: 1,
-      },
-      {
-        question: "EM algorithm iterates until?",
-        options: [
-          "Never stops",
-          "Convergence reached",
-          "One iteration",
-          "Error increases",
-        ],
-        correct: 1,
-      },
-      {
-        question: "EM is used in?",
-        options: [
-          "Supervised learning only",
-          "Gaussian Mixture Models",
-          "Linear regression",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "EM advantage?",
-        options: [
-          "Handles missing data",
-          "Very fast always",
-          "No computation",
-          "Perfect accuracy",
+          "Quantum Machine Learning",
+          "Bayesian Networks",
+          "Explainable AI",
+          "Cognitive Computing",
         ],
         correct: 0,
       },
       {
-        question: "EM disadvantage?",
+        question:
+          "### Which field forms the foundation for predictive analytics?",
         options: [
-          "Too simple",
-          "Slow convergence",
-          "Too fast",
-          "No disadvantage",
+          "Data Science",
+          "Computer Vision",
+          "Deep Learning",
+          "Quantum Computing",
         ],
-        correct: 1,
-      },
-      {
-        question: "EM guarantees?",
-        options: [
-          "Global optimum",
-          "Likelihood increases per iteration",
-          "Random results",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "EM applications include?",
-        options: [
-          "Only clustering",
-          "Image reconstruction, medical data",
-          "Only text",
-          "Nothing",
-        ],
-        correct: 1,
+        correct: 0,
       },
     ],
   },
   {
-    id: 17,
-    title: "Gaussian Mixture Models",
-    pages: "363-369",
-    summary:
-      "This unit explains Gaussian Mixture Models (GMM) for density estimation and clustering. GMM assumes data comes from multiple Gaussian distributions. It covers model parameters, EM algorithm for training, and applications in clustering and anomaly detection.",
-    keyTakeaways: [
-      "GMM models data as mixture of Gaussian distributions",
-      "Each component has mean, variance, and mixing weight",
-      "Trained using EM algorithm",
-      "Flexible for clustering and density estimation",
-    ],
-    quiz: [
-      {
-        question: "GMM assumes data from?",
-        options: [
-          "One distribution",
-          "Mixture of Gaussian distributions",
-          "Uniform distribution",
-          "No distribution",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Each Gaussian component has?",
-        options: [
-          "Only mean",
-          "Mean, variance, and weight",
-          "No parameters",
-          "Only variance",
-        ],
-        correct: 1,
-      },
-      {
-        question: "GMM is trained using?",
-        options: [
-          "Gradient descent",
-          "EM algorithm",
-          "Random search",
-          "No training",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Mixing weight represents?",
-        options: ["Error", "Probability of component", "Mean", "Variance"],
-        correct: 1,
-      },
-      {
-        question: "GMM can be used for?",
-        options: [
-          "Only classification",
-          "Clustering and density estimation",
-          "Only regression",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "GMM advantage over K-means?",
-        options: [
-          "Faster",
-          "Models elliptical clusters with probabilities",
-          "Simpler",
-          "No advantage",
-        ],
-        correct: 1,
-      },
-      {
-        question: "In GMM, data points?",
-        options: [
-          "Belong to one cluster",
-          "Have probability of belonging to each cluster",
-          "Have no cluster",
-          "Are deleted",
-        ],
-        correct: 1,
-      },
-      {
-        question: "GMM applications include?",
-        options: [
-          "Image segmentation",
-          "Speech recognition",
-          "Anomaly detection",
-          "All of these",
-        ],
-        correct: 3,
-      },
-      {
-        question: "Number of Gaussian components?",
-        options: ["Always 1", "Must be specified (like K)", "Infinite", "Zero"],
-        correct: 1,
-      },
-      {
-        question: "GMM disadvantage?",
-        options: [
-          "Too simple",
-          "Sensitive to initialization",
-          "Too fast",
-          "No parameters",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 18,
-    title: "Mixture of Naive Bayes",
-    pages: "370-376",
-    summary:
-      "This unit covers Mixture of Naive Bayes models that combine multiple Naive Bayes classifiers. It explains how MNB handles data from multiple subpopulations, latent cluster variables, and improves classification by modeling complex distributions.",
-    keyTakeaways: [
-      "Combines multiple Naive Bayes models for complex data",
-      "Assumes data from multiple subpopulations/clusters",
-      "Uses latent variables to indicate cluster membership",
-      "More flexible than single Naive Bayes",
-    ],
-    quiz: [
-      {
-        question: "Mixture of Naive Bayes combines?",
-        options: [
-          "One model",
-          "Multiple Naive Bayes classifiers",
-          "Decision trees",
-          "SVMs",
-        ],
-        correct: 1,
-      },
-      {
-        question: "MNB assumes data from?",
-        options: [
-          "One population",
-          "Multiple subpopulations",
-          "No population",
-          "Random source",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Latent variable in MNB indicates?",
-        options: ["Error", "Cluster membership", "Accuracy", "Time"],
-        correct: 1,
-      },
-      {
-        question: "MNB is useful when?",
-        options: [
-          "Data is simple",
-          "Single NB assumption too restrictive",
-          "No data",
-          "Always",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Within each cluster, MNB assumes?",
-        options: [
-          "No independence",
-          "Feature independence given class",
-          "All dependent",
-          "Random",
-        ],
-        correct: 1,
-      },
-      {
-        question: "MNB classification assigns to?",
-        options: [
-          "Random cluster",
-          "Cluster with highest posterior probability",
-          "First cluster",
-          "No cluster",
-        ],
-        correct: 1,
-      },
-      {
-        question: "MNB advantage?",
-        options: [
-          "Simpler than NB",
-          "Captures complex relationships",
-          "Faster",
-          "Needs no data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "MNB used in?",
-        options: [
-          "Only images",
-          "Text classification",
-          "Only audio",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "MNB parameters include?",
-        options: [
-          "Only one set",
-          "Multiple sets for each cluster",
-          "No parameters",
-          "Random values",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Compared to single NB, MNB is?",
-        options: ["Simpler", "More flexible and complex", "Same", "Worse"],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 19,
-    title: "Hidden Markov Models",
-    pages: "377-391",
-    summary:
-      "This unit introduces Hidden Markov Models for modeling sequential data with hidden states. It covers HMM components (states, observations, transitions, emissions), the Forward-Backward and Viterbi algorithms, and applications in speech recognition and bioinformatics.",
-    keyTakeaways: [
-      "HMMs model sequences with observable and hidden states",
-      "Consists of transition and emission probabilities",
-      "Viterbi finds most likely state sequence",
-      "Applications in speech, NLP, and bioinformatics",
-    ],
-    quiz: [
-      {
-        question: "HMM models?",
-        options: [
-          "Static data",
-          "Sequential data with hidden states",
-          "Images only",
-          "No data",
-        ],
-        correct: 1,
-      },
-      {
-        question: "In HMM, states are?",
-        options: ["Always visible", "Hidden/unobservable", "Random", "Deleted"],
-        correct: 1,
-      },
-      {
-        question: "HMM has two types of probabilities?",
-        options: [
-          "Only transition",
-          "Transition and emission",
-          "Only emission",
-          "No probabilities",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Viterbi algorithm finds?",
-        options: [
-          "Random sequence",
-          "Most likely hidden state sequence",
-          "All sequences",
-          "No sequence",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Forward-Backward algorithm computes?",
-        options: [
-          "Nothing",
-          "Probability of observation sequence",
-          "Only states",
-          "Random value",
-        ],
-        correct: 1,
-      },
-      {
-        question: "HMM used in?",
-        options: [
-          "Only images",
-          "Speech recognition",
-          "Static data",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Transition probability is?",
-        options: [
-          "State to observation",
-          "State to state",
-          "Random",
-          "Constant",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Emission probability is?",
-        options: ["State to state", "State to observation", "Random", "Zero"],
-        correct: 1,
-      },
-      {
-        question: "HMM assumes?",
-        options: [
-          "All states visible",
-          "Markov property",
-          "No dependencies",
-          "Random process",
-        ],
-        correct: 1,
-      },
-      {
-        question: "HMM limitation?",
-        options: [
-          "Too simple",
-          "Fixed state space assumption",
-          "Too fast",
-          "No limitation",
-        ],
-        correct: 1,
-      },
-    ],
-  },
-  {
-    id: 20,
-    title: "Reinforcement Learning",
-    pages: "392-411",
-    summary:
-      "This unit covers reinforcement learning where agents learn through interaction with environment. It explains key concepts (agent, environment, state, action, reward), policy, value functions, Q-learning, and applications in robotics, games, and autonomous systems.",
-    keyTakeaways: [
-      "Agent learns by interacting with environment through trial and error",
-      "Receives rewards/penalties for actions taken",
-      "Goal is to maximize cumulative long-term reward",
-      "Applications in robotics, games, autonomous vehicles",
-    ],
-    quiz: [
-      {
-        question: "In RL, agent learns through?",
-        options: [
-          "Labeled data",
-          "Trial and error interaction",
-          "Memorization",
-          "No learning",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Agent receives what for actions?",
-        options: ["Nothing", "Rewards or penalties", "Only data", "Labels"],
-        correct: 1,
-      },
-      {
-        question: "RL goal is to?",
-        options: [
-          "Minimize reward",
-          "Maximize cumulative reward",
-          "Random actions",
-          "No goal",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Policy in RL is?",
-        options: ["Data", "Strategy for selecting actions", "Reward", "State"],
-        correct: 1,
-      },
-      {
-        question: "Value function estimates?",
-        options: [
-          "Current reward",
-          "Expected long-term reward",
-          "Action count",
-          "Nothing",
-        ],
-        correct: 1,
-      },
-      {
-        question: "Q-value represents?",
-        options: [
-          "Quantum value",
-          "Quality of action in state",
-          "Quick value",
-          "No meaning",
-        ],
-        correct: 1,
-      },
-      {
-        question: "RL environment is typically?",
-        options: ["Deterministic", "Stochastic", "Static", "None"],
-        correct: 1,
-      },
-      {
-        question: "Model-based RL uses?",
-        options: [
-          "No model",
-          "Virtual model of environment",
-          "Only data",
-          "Random model",
-        ],
-        correct: 1,
-      },
-      {
-        question: "RL applications include?",
-        options: [
-          "Self-driving cars",
-          "Game playing",
-          "Robot control",
-          "All of these",
-        ],
-        correct: 3,
-      },
-      {
-        question: "Exploration vs exploitation in RL?",
-        options: [
-          "No tradeoff",
-          "Balance trying new vs using known actions",
-          "Always explore",
-          "Always exploit",
-        ],
-        correct: 1,
-      },
-    ],
-  },
+  id: 5,
+  title: "Applications of Machine Learning",
+  pages: "60–77",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+Machine Learning (ML) has become a transformative force across nearly every industry, automating decision-making, improving predictions, and enabling new forms of intelligence.  
+Its versatility stems from its ability to **learn from data**, identify hidden patterns, and **adapt to changing environments**.
+
+### 1. Healthcare
+- **Diagnostics:** ML models detect diseases from X-rays, MRIs, or blood tests (e.g., cancer, pneumonia detection).
+- **Drug Discovery:** Predict molecular behavior and simulate chemical reactions.
+- **Personalized Medicine:** Predict optimal treatments for individual patients using genetic and lifestyle data.
+- **Epidemiology:** Predict disease spread and optimize response planning.
+
+**Key Techniques:** Deep Learning (CNNs, RNNs), Regression, and Ensemble Learning.
+
+---
+
+### 2. Finance and Banking
+- **Fraud Detection:** ML detects suspicious transaction patterns and anomalies.
+- **Credit Scoring:** Predict creditworthiness using multiple behavioral and financial indicators.
+- **Algorithmic Trading:** Predict stock price movements using real-time market data.
+- **Risk Management:** Simulate potential losses using probabilistic and predictive models.
+
+**Common Models:** Decision Trees, SVMs, and Neural Networks.
+
+---
+
+### 3. Retail and E-commerce
+- **Recommendation Systems:** Suggest products based on user history and preferences (e.g., Amazon, Netflix).
+- **Customer Segmentation:** Cluster customers into distinct groups using unsupervised learning.
+- **Demand Forecasting:** Predict future sales trends based on seasonality, promotions, and user behavior.
+- **Churn Prediction:** Identify customers likely to leave and take retention measures.
+
+**Key Techniques:** Collaborative Filtering, Clustering, Regression.
+
+---
+
+### 4. Manufacturing and Industry
+- **Predictive Maintenance:** Forecast machine failures before they occur, reducing downtime.
+- **Quality Control:** Detect product defects using image recognition.
+- **Supply Chain Optimization:** Improve production efficiency and logistics.
+- **Robotics:** ML enables adaptive robotic control and process automation.
+
+**Core Methods:** Time Series Forecasting, Reinforcement Learning, Computer Vision.
+
+---
+
+### 5. Agriculture
+- **Crop Yield Prediction:** Use satellite data and weather patterns to forecast yields.
+- **Soil Monitoring:** Classify soil quality and nutrient composition.
+- **Pest Detection:** Identify and classify pest infestations using image analysis.
+- **Smart Irrigation:** Optimize water use with sensor-based predictive control.
+
+**Techniques Used:** Decision Trees, CNNs, and IoT-integrated ML.
+
+---
+
+### 6. Transportation
+- **Autonomous Vehicles:** Use deep reinforcement learning for path planning, control, and perception.
+- **Traffic Prediction:** Forecast congestion and optimize routes using live data.
+- **Fleet Management:** Optimize logistics and delivery schedules.
+
+**Approaches:** Reinforcement Learning, Neural Networks, and Regression Analysis.
+
+---
+
+### 7. Energy and Environment
+- **Power Load Forecasting:** Predict demand patterns for grid management.
+- **Renewable Energy Optimization:** Optimize solar and wind systems through ML-driven control.
+- **Climate Modeling:** Detect long-term environmental trends and anomalies.
+- **Pollution Monitoring:** Predict and visualize air quality metrics.
+
+**Methods:** Time-Series Models, Neural Networks, Gradient Boosting.
+
+---
+
+### 8. Education
+- **Intelligent Tutoring Systems:** Adapt learning materials based on student progress.
+- **Performance Prediction:** Identify struggling students early.
+- **Automated Grading:** Grade assignments using NLP and text classification.
+- **Curriculum Optimization:** Analyze learning outcomes to design better teaching strategies.
+
+**Techniques:** NLP, Clustering, and Supervised Classification.
+
+---
+
+### 9. Entertainment and Media
+- **Content Personalization:** Platforms like Spotify, YouTube, and Netflix use ML to tailor content.
+- **Game AI:** Adaptive agents that learn player strategies.
+- **Generative Models:** Create art, music, or synthetic media using GANs and Transformers.
+
+**Techniques:** Reinforcement Learning, Deep Generative Models, NLP.
+
+---
+
+### 10. Security and Defense
+- **Anomaly Detection:** Identify cyber threats or intrusions.
+- **Facial Recognition:** Authenticate individuals in secure systems.
+- **Behavioral Analytics:** Identify insider threats or suspicious actions.
+
+**Methods:** CNNs, Autoencoders, and Ensemble Learning.
+
+---
+
+### 11. Government and Public Sector
+- **Smart City Planning:** Analyze traffic, energy, and waste management systems.
+- **Policy Modeling:** Predict outcomes of social or economic policies.
+- **Fraud Detection:** Identify irregularities in taxation or benefits systems.
+
+---
+
+### 12. Emerging Areas
+- **Legal Tech:** Predict case outcomes and assist with document discovery.
+- **Healthcare Genomics:** Personalized treatment based on genetic sequencing.
+- **Climate AI:** Forecast natural disasters and optimize resource management.
+- **Ethical AI:** Monitor bias, fairness, and inclusivity in algorithmic systems.
+
+---
+
+### Summary
+Machine learning has applications across every domain — enabling automation, improving decisions, and unlocking new possibilities in science, business, and daily life.`,
+  keyTakeaways: [
+    "Machine learning applications span healthcare, finance, agriculture, manufacturing, and more.",
+    "Healthcare uses ML for diagnostics, drug discovery, and personalized medicine.",
+    "Finance applies ML for fraud detection, credit scoring, and algorithmic trading.",
+    "Retail leverages ML for recommendations, demand forecasting, and customer segmentation.",
+    "Manufacturing uses predictive maintenance and quality control powered by ML.",
+    "Agriculture benefits from yield prediction, pest detection, and irrigation optimization.",
+    "Transportation integrates ML for autonomous vehicles and route optimization.",
+    "Energy management relies on ML for demand forecasting and renewable optimization.",
+    "Education and entertainment use ML for personalization and intelligent tutoring.",
+    "Emerging domains like legal tech and ethical AI showcase ML’s evolving impact."
+  ],
+  quiz: [
+    {
+      question: "### What is a key use of ML in healthcare?",
+      options: [
+        "Predicting stock prices",
+        "Diagnosing diseases from images and patient data",
+        "Designing mobile apps",
+        "Rendering 3D graphics"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which ML application is common in finance?",
+      options: [
+        "Predicting molecular reactions",
+        "Fraud detection and risk scoring",
+        "Autonomous vehicle control",
+        "Personalized tutoring systems"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which ML technique powers product recommendation systems?",
+      options: [
+        "Clustering",
+        "Regression Trees",
+        "Collaborative Filtering",
+        "Generative Adversarial Networks"
+      ],
+      correct: 2
+    },
+    {
+      question: "### What is predictive maintenance?",
+      options: [
+        "Forecasting system failures before they happen",
+        "Building new machines automatically",
+        "Cleaning manufacturing data",
+        "Increasing employee productivity"
+      ],
+      correct: 0
+    },
+    {
+      question: "### How is ML used in agriculture?",
+      options: [
+        "Crop yield forecasting and pest detection",
+        "Credit scoring",
+        "Facial recognition",
+        "Text summarization"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ML area powers autonomous vehicles?",
+      options: [
+        "Reinforcement Learning",
+        "Clustering",
+        "Regression Analysis",
+        "Semi-Supervised Learning"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is a typical ML use case in the energy sector?",
+      options: [
+        "Predicting power demand and optimizing grid control",
+        "Image classification of solar panels",
+        "Chatbot development",
+        "Legal document summarization"
+      ],
+      correct: 0
+    },
+    {
+      question: "### How does ML enhance education?",
+      options: [
+        "Through intelligent tutoring and personalized learning systems",
+        "By generating random quizzes",
+        "By detecting malware in school networks",
+        "By creating new languages"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What ML methods are common in entertainment?",
+      options: [
+        "Reinforcement learning and deep generative models",
+        "Clustering and K-means only",
+        "Simple linear regression only",
+        "Data encryption techniques"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is a common ML technique for fraud detection?",
+      options: [
+        "Decision Trees and Neural Networks",
+        "Convolutional Layers",
+        "Text Embeddings",
+        "K-means Clustering only"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ML approach is used for climate prediction and disaster forecasting?",
+      options: [
+        "Time-Series Forecasting and Deep Learning",
+        "Clustering and PCA",
+        "Binary Classification only",
+        "Monte Carlo Simulation only"
+      ],
+      correct: 0
+    },
+    {
+      question: "### In retail, how is ML used to prevent customer churn?",
+      options: [
+        "Predicting which customers are likely to leave",
+        "Detecting financial fraud",
+        "Reinforcing warehouse robots",
+        "Encrypting user data"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ML concept supports robotics and adaptive control?",
+      options: [
+        "Reinforcement Learning",
+        "Natural Language Processing",
+        "Transfer Learning",
+        "Causal Inference"
+      ],
+      correct: 0
+    }
+  ]
+},
+{
+  id: 6,
+  title: "Software Tools for Machine Learning",
+  pages: "78–89",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+Machine Learning (ML) development depends heavily on powerful **software tools, libraries, and environments** that simplify data processing, model training, and deployment.  
+These tools range from general-purpose programming libraries to specialized ML frameworks that provide **ready-to-use algorithms, visualization utilities, and model management features**.
+
+---
+
+### 1. Python Ecosystem
+Python is the **most popular programming language** for machine learning because of its simplicity, large community, and extensive libraries.
+
+#### Key Libraries:
+- **NumPy:** Provides efficient numerical computations and array operations.
+- **Pandas:** For data manipulation and preprocessing using DataFrames.
+- **Matplotlib & Seaborn:** Visualization tools for data insights and model performance plots.
+- **SciPy:** Supports scientific and statistical computing.
+
+---
+
+### 2. Scikit-learn
+- One of the most widely used ML libraries for **classical algorithms**.
+- Features include:
+  - Regression, classification, clustering, dimensionality reduction
+  - Model evaluation and cross-validation tools
+  - Pipelines for preprocessing and training
+- Ideal for **beginners** and **prototyping** standard ML workflows.
+
+---
+
+### 3. TensorFlow
+- Developed by **Google**, TensorFlow is a powerful framework for **deep learning** and **neural networks**.
+- Features:
+  - GPU/TPU acceleration
+  - Computational graph-based execution
+  - Large-scale distributed training
+  - TensorBoard for visualization
+- Ideal for **research and production deployment**.
+
+---
+
+### 4. Keras
+- A **high-level neural network API** built on top of TensorFlow (and previously Theano).
+- Provides simple abstractions for:
+  - Defining deep models with minimal code
+  - Layer-based model design
+  - Model saving and loading
+- Popular for its **ease of use** and **rapid prototyping** capabilities.
+
+---
+
+### 5. PyTorch
+- Developed by **Facebook’s AI Research (FAIR)**.
+- A deep learning framework with **dynamic computation graphs**, making it flexible for experimentation.
+- Features:
+  - Easy debugging
+  - Autograd for automatic differentiation
+  - Strong community and integration with Hugging Face
+- Used extensively in **research**, **NLP**, and **computer vision**.
+
+---
+
+### 6. Weka
+- A **Java-based ML platform** with a **graphical user interface (GUI)**.
+- Supports:
+  - Data preprocessing
+  - Classification, clustering, and association rule mining
+  - Visual analysis
+- Suitable for users with limited programming background.
+
+---
+
+### 7. RapidMiner
+- A **drag-and-drop data science platform** for predictive analytics.
+- Features:
+  - Data preparation and model deployment tools
+  - Visual workflow design
+  - Integration with Python and R
+- Ideal for **enterprise-level ML applications**.
+
+---
+
+### 8. Orange
+- **Open-source visual programming** tool for machine learning and data mining.
+- Modules for:
+  - Classification
+  - Regression
+  - Clustering
+  - Visualization
+- Perfect for **educational use** and **quick experimentation**.
+
+---
+
+### 9. Jupyter Notebook
+- An interactive development environment (IDE) for **data exploration, code, and documentation**.
+- Supports live code execution and rich media outputs.
+- Widely used in research, tutorials, and ML model prototyping.
+
+---
+
+### 10. Google Colab
+- Cloud-based version of Jupyter that provides **free GPU/TPU access**.
+- Useful for training deep learning models without local setup.
+- Integrated with Google Drive for data management.
+
+---
+
+### 11. MLflow
+- An open-source platform for **managing the ML lifecycle**.
+- Supports:
+  - Experiment tracking
+  - Model versioning
+  - Deployment pipelines
+- Works with TensorFlow, PyTorch, and Scikit-learn.
+
+---
+
+### 12. Hugging Face
+- Provides pre-trained models and APIs for **NLP and transformer-based architectures**.
+- Integrates with PyTorch and TensorFlow.
+- Supports text generation, summarization, translation, and more.
+
+---
+
+### Summary
+These tools streamline the entire ML pipeline — from data preprocessing to model deployment.  
+Choosing the right tool depends on **task complexity**, **team expertise**, and **deployment environment**.`,
+  keyTakeaways: [
+    "Python dominates ML development due to its simplicity and robust library ecosystem.",
+    "Scikit-learn is ideal for traditional ML algorithms and rapid prototyping.",
+    "TensorFlow and PyTorch are the two most popular deep learning frameworks.",
+    "Keras simplifies model creation with user-friendly abstractions.",
+    "Weka, RapidMiner, and Orange offer GUI-based workflows for non-programmers.",
+    "Jupyter and Google Colab provide interactive, notebook-style development environments.",
+    "MLflow enables experiment tracking and model management for reproducibility.",
+    "Hugging Face simplifies NLP development with pre-trained transformer models.",
+    "Selecting the right tool depends on scalability, performance, and usability needs."
+  ],
+  quiz: [
+    {
+      question: "### Why is Python preferred for machine learning?",
+      options: [
+        "It is faster than C++",
+        "It has a rich ecosystem of ML libraries and simplicity of syntax",
+        "It requires less memory",
+        "It doesn’t need dependencies"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which library is most commonly used for numerical computation in ML?",
+      options: [
+        "NumPy",
+        "TensorFlow",
+        "Pandas",
+        "Weka"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Scikit-learn is best suited for which type of tasks?",
+      options: [
+        "Deep neural networks",
+        "Traditional ML algorithms like regression and classification",
+        "Speech recognition",
+        "Autonomous robotics"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is TensorFlow primarily used for?",
+      options: [
+        "Statistical visualization",
+        "Deep learning and distributed neural network training",
+        "Database management",
+        "Web development"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What makes PyTorch popular among researchers?",
+      options: [
+        "It is GUI-based",
+        "It provides dynamic computation graphs and easy debugging",
+        "It is built for small datasets only",
+        "It has no GPU support"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which framework provides a drag-and-drop interface for ML workflows?",
+      options: [
+        "Scikit-learn",
+        "RapidMiner",
+        "TensorFlow",
+        "Hugging Face"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which tool is ideal for non-programmers and educational use?",
+      options: [
+        "Orange",
+        "PyTorch",
+        "NumPy",
+        "Keras"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is the primary benefit of Jupyter Notebook?",
+      options: [
+        "It allows code execution, visualization, and documentation in one place",
+        "It compiles code faster than Python",
+        "It’s only for deep learning",
+        "It stores data in the cloud"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What does MLflow specialize in?",
+      options: [
+        "Hyperparameter tuning",
+        "Experiment tracking and model lifecycle management",
+        "Visualization of datasets",
+        "Cloud hosting"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which tool provides free GPU access for model training?",
+      options: [
+        "Weka",
+        "Google Colab",
+        "Scikit-learn",
+        "Orange"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is Hugging Face mainly known for?",
+      options: [
+        "Building decision trees",
+        "Providing NLP transformer models and APIs",
+        "Optimizing GPU usage",
+        "Database connectivity"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which tool visualizes TensorFlow training performance?",
+      options: [
+        "TensorBoard",
+        "Seaborn",
+        "RapidMiner",
+        "Keras Dashboard"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ML library is built in Java and offers a GUI for beginners?",
+      options: [
+        "Weka",
+        "Scikit-learn",
+        "PyTorch",
+        "Keras"
+      ],
+      correct: 0
+    }
+  ]
+},
+{
+  id: 6,
+  title: "Software Tools for Machine Learning",
+  pages: "78–89",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+Machine Learning (ML) development depends heavily on powerful **software tools, libraries, and environments** that simplify data processing, model training, and deployment.  
+These tools range from general-purpose programming libraries to specialized ML frameworks that provide **ready-to-use algorithms, visualization utilities, and model management features**.
+
+---
+
+### 1. Python Ecosystem
+Python is the **most popular programming language** for machine learning because of its simplicity, large community, and extensive libraries.
+
+#### Key Libraries:
+- **NumPy:** Provides efficient numerical computations and array operations.
+- **Pandas:** For data manipulation and preprocessing using DataFrames.
+- **Matplotlib & Seaborn:** Visualization tools for data insights and model performance plots.
+- **SciPy:** Supports scientific and statistical computing.
+
+---
+
+### 2. Scikit-learn
+- One of the most widely used ML libraries for **classical algorithms**.
+- Features include:
+  - Regression, classification, clustering, dimensionality reduction
+  - Model evaluation and cross-validation tools
+  - Pipelines for preprocessing and training
+- Ideal for **beginners** and **prototyping** standard ML workflows.
+
+---
+
+### 3. TensorFlow
+- Developed by **Google**, TensorFlow is a powerful framework for **deep learning** and **neural networks**.
+- Features:
+  - GPU/TPU acceleration
+  - Computational graph-based execution
+  - Large-scale distributed training
+  - TensorBoard for visualization
+- Ideal for **research and production deployment**.
+
+---
+
+### 4. Keras
+- A **high-level neural network API** built on top of TensorFlow (and previously Theano).
+- Provides simple abstractions for:
+  - Defining deep models with minimal code
+  - Layer-based model design
+  - Model saving and loading
+- Popular for its **ease of use** and **rapid prototyping** capabilities.
+
+---
+
+### 5. PyTorch
+- Developed by **Facebook’s AI Research (FAIR)**.
+- A deep learning framework with **dynamic computation graphs**, making it flexible for experimentation.
+- Features:
+  - Easy debugging
+  - Autograd for automatic differentiation
+  - Strong community and integration with Hugging Face
+- Used extensively in **research**, **NLP**, and **computer vision**.
+
+---
+
+### 6. Weka
+- A **Java-based ML platform** with a **graphical user interface (GUI)**.
+- Supports:
+  - Data preprocessing
+  - Classification, clustering, and association rule mining
+  - Visual analysis
+- Suitable for users with limited programming background.
+
+---
+
+### 7. RapidMiner
+- A **drag-and-drop data science platform** for predictive analytics.
+- Features:
+  - Data preparation and model deployment tools
+  - Visual workflow design
+  - Integration with Python and R
+- Ideal for **enterprise-level ML applications**.
+
+---
+
+### 8. Orange
+- **Open-source visual programming** tool for machine learning and data mining.
+- Modules for:
+  - Classification
+  - Regression
+  - Clustering
+  - Visualization
+- Perfect for **educational use** and **quick experimentation**.
+
+---
+
+### 9. Jupyter Notebook
+- An interactive development environment (IDE) for **data exploration, code, and documentation**.
+- Supports live code execution and rich media outputs.
+- Widely used in research, tutorials, and ML model prototyping.
+
+---
+
+### 10. Google Colab
+- Cloud-based version of Jupyter that provides **free GPU/TPU access**.
+- Useful for training deep learning models without local setup.
+- Integrated with Google Drive for data management.
+
+---
+
+### 11. MLflow
+- An open-source platform for **managing the ML lifecycle**.
+- Supports:
+  - Experiment tracking
+  - Model versioning
+  - Deployment pipelines
+- Works with TensorFlow, PyTorch, and Scikit-learn.
+
+---
+
+### 12. Hugging Face
+- Provides pre-trained models and APIs for **NLP and transformer-based architectures**.
+- Integrates with PyTorch and TensorFlow.
+- Supports text generation, summarization, translation, and more.
+
+---
+
+### Summary
+These tools streamline the entire ML pipeline — from data preprocessing to model deployment.  
+Choosing the right tool depends on **task complexity**, **team expertise**, and **deployment environment**.`,
+  keyTakeaways: [
+    "Python dominates ML development due to its simplicity and robust library ecosystem.",
+    "Scikit-learn is ideal for traditional ML algorithms and rapid prototyping.",
+    "TensorFlow and PyTorch are the two most popular deep learning frameworks.",
+    "Keras simplifies model creation with user-friendly abstractions.",
+    "Weka, RapidMiner, and Orange offer GUI-based workflows for non-programmers.",
+    "Jupyter and Google Colab provide interactive, notebook-style development environments.",
+    "MLflow enables experiment tracking and model management for reproducibility.",
+    "Hugging Face simplifies NLP development with pre-trained transformer models.",
+    "Selecting the right tool depends on scalability, performance, and usability needs."
+  ],
+  quiz: [
+    {
+      question: "### Why is Python preferred for machine learning?",
+      options: [
+        "It is faster than C++",
+        "It has a rich ecosystem of ML libraries and simplicity of syntax",
+        "It requires less memory",
+        "It doesn’t need dependencies"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which library is most commonly used for numerical computation in ML?",
+      options: [
+        "NumPy",
+        "TensorFlow",
+        "Pandas",
+        "Weka"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Scikit-learn is best suited for which type of tasks?",
+      options: [
+        "Deep neural networks",
+        "Traditional ML algorithms like regression and classification",
+        "Speech recognition",
+        "Autonomous robotics"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is TensorFlow primarily used for?",
+      options: [
+        "Statistical visualization",
+        "Deep learning and distributed neural network training",
+        "Database management",
+        "Web development"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What makes PyTorch popular among researchers?",
+      options: [
+        "It is GUI-based",
+        "It provides dynamic computation graphs and easy debugging",
+        "It is built for small datasets only",
+        "It has no GPU support"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which framework provides a drag-and-drop interface for ML workflows?",
+      options: [
+        "Scikit-learn",
+        "RapidMiner",
+        "TensorFlow",
+        "Hugging Face"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which tool is ideal for non-programmers and educational use?",
+      options: [
+        "Orange",
+        "PyTorch",
+        "NumPy",
+        "Keras"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is the primary benefit of Jupyter Notebook?",
+      options: [
+        "It allows code execution, visualization, and documentation in one place",
+        "It compiles code faster than Python",
+        "It’s only for deep learning",
+        "It stores data in the cloud"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What does MLflow specialize in?",
+      options: [
+        "Hyperparameter tuning",
+        "Experiment tracking and model lifecycle management",
+        "Visualization of datasets",
+        "Cloud hosting"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which tool provides free GPU access for model training?",
+      options: [
+        "Weka",
+        "Google Colab",
+        "Scikit-learn",
+        "Orange"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is Hugging Face mainly known for?",
+      options: [
+        "Building decision trees",
+        "Providing NLP transformer models and APIs",
+        "Optimizing GPU usage",
+        "Database connectivity"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which tool visualizes TensorFlow training performance?",
+      options: [
+        "TensorBoard",
+        "Seaborn",
+        "RapidMiner",
+        "Keras Dashboard"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ML library is built in Java and offers a GUI for beginners?",
+      options: [
+        "Weka",
+        "Scikit-learn",
+        "PyTorch",
+        "Keras"
+      ],
+      correct: 0
+    }
+  ]
+},
+{
+  id: 7,
+  title: "Supervised Learning and Regression",
+  pages: "90–151",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+**Supervised Learning** is one of the most fundamental paradigms in machine learning.  
+It uses **labeled data** — examples where both inputs (features) and desired outputs (labels) are known — to learn a mapping function from inputs to outputs.  
+The trained model can then **predict outputs for new, unseen data**.
+
+Regression is a major branch of supervised learning focused on **predicting continuous numerical values**.
+
+---
+
+### 1. Principles of Supervised Learning
+- The model is trained using pairs of input data \\( (x_i, y_i) \\).
+- The objective is to minimize the difference between **predicted output** and **actual output**.
+- Supervised learning tasks are divided into:
+  - **Regression:** Predicting continuous values.
+  - **Classification:** Predicting discrete categories.
+
+#### General Supervised Learning Workflow:
+1. Collect and label dataset.
+2. Split data into **training**, **validation**, and **testing** sets.
+3. Choose model/algorithm.
+4. Train the model using training data.
+5. Evaluate using performance metrics.
+6. Deploy and monitor.
+
+---
+
+### 2. Regression Analysis
+Regression estimates the **relationship between dependent (target) and independent (predictor) variables**.
+
+#### Types of Regression:
+1. **Linear Regression**
+   - Models a straight-line relationship:
+     \\[
+     y = \\beta_0 + \\beta_1x + \\epsilon
+     \\]
+   - Used for trend estimation and forecasting.
+   - Assumes linearity and independence.
+
+2. **Multiple Linear Regression**
+   - Uses multiple predictors:
+     \\[
+     y = \\beta_0 + \\beta_1x_1 + \\beta_2x_2 + ... + \\beta_nx_n + \\epsilon
+     \\]
+
+3. **Polynomial Regression**
+   - Adds polynomial terms to capture curvature:
+     \\[
+     y = \\beta_0 + \\beta_1x + \\beta_2x^2 + ... + \\beta_nx^n + \\epsilon
+     \\]
+   - Useful for non-linear patterns.
+
+4. **Ridge Regression**
+   - Adds **L2 regularization** to reduce overfitting by penalizing large coefficients.
+
+5. **LASSO Regression**
+   - Uses **L1 regularization**, which can drive some coefficients to zero — performing **feature selection**.
+
+6. **Elastic Net**
+   - A hybrid of L1 and L2 regularization.
+
+---
+
+### 3. Assumptions of Linear Regression
+- Linearity between variables  
+- Homoscedasticity (constant variance of errors)  
+- Independence of errors  
+- Normal distribution of residuals  
+- No multicollinearity among predictors  
+
+Violations of these assumptions can lead to inaccurate or biased models.
+
+---
+
+### 4. Evaluation Metrics for Regression
+- **Mean Squared Error (MSE):**
+  \\[
+  MSE = \\frac{1}{n} \\sum (y_i - \\hat{y_i})^2
+  \\]
+- **Root Mean Squared Error (RMSE):** \\( \\sqrt{MSE} \\)
+- **Mean Absolute Error (MAE):**
+  \\[
+  MAE = \\frac{1}{n} \\sum |y_i - \\hat{y_i}|
+  \\]
+- **R-squared (Coefficient of Determination):**
+  \\[
+  R^2 = 1 - \\frac{SS_{res}}{SS_{tot}}
+  \\]
+  Measures the proportion of variance explained by the model.
+
+---
+
+### 5. Regularization
+Regularization techniques (Ridge, LASSO, Elastic Net) help prevent **overfitting** by constraining coefficient magnitude.  
+They improve **model generalization** to unseen data.
+
+---
+
+### 6. Gradient Descent in Regression
+Regression models often minimize a **loss function (MSE)** using **gradient descent**:
+1. Compute gradient of loss with respect to parameters.
+2. Update parameters:
+   \\[
+   \\theta := \\theta - \\alpha \\cdot \\nabla J(\\theta)
+   \\]
+   where \\( \\alpha \\) is the **learning rate**.
+
+---
+
+### 7. Applications of Regression
+- **Predicting house prices**
+- **Forecasting stock values**
+- **Modeling population growth**
+- **Estimating demand or sales**
+- **Predicting temperature or pollution**
+
+---
+
+### 8. Limitations
+- Sensitive to outliers.
+- Assumes linear relationships.
+- May not capture complex, non-linear interactions unless extended (e.g., polynomial regression).
+- Requires good data preprocessing and feature scaling.
+
+---
+
+### Summary
+Regression analysis provides interpretable and efficient models for prediction, trend estimation, and forecasting.  
+Regularization and careful validation are crucial for achieving **robust and generalizable** results.`,
+  keyTakeaways: [
+    "Supervised learning uses labeled data to map inputs to outputs.",
+    "Regression predicts continuous numerical values; classification predicts categories.",
+    "Linear regression assumes linear relationships between variables.",
+    "Ridge and LASSO regression help prevent overfitting via regularization.",
+    "Polynomial regression models non-linear patterns by adding power terms.",
+    "MSE, RMSE, MAE, and R² are core regression evaluation metrics.",
+    "Gradient descent is commonly used to minimize regression loss functions.",
+    "Regression is widely used in forecasting and quantitative analysis."
+  ],
+  quiz: [
+    {
+      question: "### What distinguishes supervised learning from unsupervised learning?",
+      options: [
+        "Supervised learning uses labeled data, while unsupervised uses unlabeled data.",
+        "Supervised learning uses clustering, while unsupervised uses regression.",
+        "Supervised learning requires reinforcement signals.",
+        "Supervised learning cannot generalize to new data."
+      ],
+      correct: 0
+    },
+    {
+      question: "### What does regression aim to predict?",
+      options: [
+        "Discrete categories",
+        "Continuous numerical values",
+        "Cluster labels",
+        "Reinforcement rewards"
+      ],
+      correct: 1
+    },
+    {
+      question: "### In linear regression, what does the slope (β₁) represent?",
+      options: [
+        "The intercept",
+        "The rate of change in y for a unit change in x",
+        "The residual error",
+        "The variance of the model"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which regression technique adds an L2 penalty to reduce overfitting?",
+      options: [
+        "LASSO Regression",
+        "Ridge Regression",
+        "Polynomial Regression",
+        "Elastic Net"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the main advantage of LASSO regression?",
+      options: [
+        "It removes all bias automatically",
+        "It performs feature selection by shrinking some coefficients to zero",
+        "It works only for categorical outputs",
+        "It has no regularization penalty"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which metric measures the average magnitude of errors regardless of direction?",
+      options: [
+        "R²",
+        "MAE (Mean Absolute Error)",
+        "RMSE",
+        "Variance"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does R-squared indicate?",
+      options: [
+        "Model accuracy for classification tasks",
+        "Proportion of variance in the dependent variable explained by the model",
+        "The sum of squared residuals",
+        "Learning rate effectiveness"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the purpose of regularization?",
+      options: [
+        "To increase training accuracy regardless of overfitting",
+        "To prevent overfitting by penalizing large coefficients",
+        "To reduce dataset size",
+        "To automatically tune learning rates"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does gradient descent minimize in regression models?",
+      options: [
+        "Entropy",
+        "Loss function (e.g., MSE)",
+        "Correlation coefficient",
+        "Regularization constant"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which regression type can model curved relationships?",
+      options: [
+        "Linear Regression",
+        "Polynomial Regression",
+        "Ridge Regression",
+        "LASSO Regression"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is a limitation of linear regression?",
+      options: [
+        "It captures non-linear interactions perfectly.",
+        "It assumes linearity and can be sensitive to outliers.",
+        "It doesn’t require any labeled data.",
+        "It automatically removes multicollinearity."
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which learning algorithm is NOT a regression type?",
+      options: [
+        "Linear Regression",
+        "Logistic Regression",
+        "Polynomial Regression",
+        "Random Forest Classification"
+      ],
+      correct: 3
+    },
+    {
+      question: "### Which of these represents the correct formula for Mean Squared Error (MSE)?",
+      options: [
+        "MSE = Σ(y_i - ŷ_i) / n",
+        "MSE = Σ(y_i - ŷ_i)² / n",
+        "MSE = √Σ(y_i - ŷ_i)",
+        "MSE = log(y_i - ŷ_i)"
+      ],
+      correct: 1
+    }
+  ]
+},
+{
+  id: 8,
+  title: "Optimization and Gradient Descent",
+  pages: "166–187",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+**Optimization** is the mathematical foundation of model training in Machine Learning (ML).  
+It focuses on finding the **best set of parameters (weights)** that minimize the model’s **loss function** — a measure of prediction error.  
+The most widely used optimization method in ML is **Gradient Descent**, which iteratively adjusts model parameters to reduce loss.
+
+---
+
+### 1. Objective and Loss Functions
+- The **objective function** defines what the algorithm aims to minimize or maximize.
+- In supervised learning, it’s typically a **loss function** measuring prediction error.
+
+#### Common Loss Functions:
+- **Mean Squared Error (MSE)** for regression
+- **Cross-Entropy Loss** for classification
+- **Hinge Loss** for SVMs
+- **Log Loss** for logistic regression
+
+The optimization process aims to find parameter values that **minimize these loss functions**.
+
+---
+
+### 2. Gradient Descent — The Core Idea
+Gradient Descent finds the minimum of a function by **moving in the direction of the negative gradient**.
+
+#### Update Rule:
+\\[
+\\theta := \\theta - \\alpha \\cdot \\nabla J(\\theta)
+\\]
+Where:
+- \\( \\theta \\): model parameters  
+- \\( \\alpha \\): learning rate  
+- \\( \\nabla J(\\theta) \\): gradient (partial derivatives of the loss function)
+
+Each step reduces the error slightly until convergence (minimum point).
+
+---
+
+### 3. Learning Rate (α)
+- Controls how large the parameter updates are.
+- **Too small:** Slow convergence.  
+- **Too large:** Divergence (overshooting the minimum).  
+- Proper tuning is essential for stable learning.
+
+---
+
+### 4. Types of Gradient Descent
+#### 1. Batch Gradient Descent
+- Uses the **entire dataset** to compute the gradient.
+- Stable but computationally expensive for large datasets.
+
+#### 2. Stochastic Gradient Descent (SGD)
+- Updates weights for **each training example** individually.
+- Faster and more scalable but introduces noise (oscillations).
+
+#### 3. Mini-Batch Gradient Descent
+- Compromise between batch and stochastic.
+- Uses **small random subsets (batches)** of data for each update.
+- Most commonly used in practice.
+
+---
+
+### 5. Gradient Descent Variants
+#### 1. Momentum
+- Adds a velocity term that **smooths updates** and avoids oscillation.
+- Speeds up convergence in valleys of the cost surface.
+
+#### 2. Nesterov Accelerated Gradient (NAG)
+- Improves momentum by making a **“look-ahead” correction** before applying updates.
+
+#### 3. Adagrad
+- Adapts learning rate individually for each parameter.
+- Works well for sparse data, but learning rate may decay too quickly.
+
+#### 4. RMSProp
+- Fixes Adagrad’s decaying issue by using **exponential moving averages** of squared gradients.
+
+#### 5. Adam (Adaptive Moment Estimation)
+- Combines Momentum + RMSProp.
+- Maintains running averages of gradients and squared gradients.
+- Default optimizer for most deep learning tasks.
+
+---
+
+### 6. Cost Surface and Convergence
+- The **cost surface** represents the relationship between parameters and loss.
+- Gradient Descent moves “downhill” along this surface.
+- Challenges:
+  - **Local minima:** May trap models in suboptimal points.
+  - **Saddle points:** Gradients close to zero but not true minima.
+  - **Plateaus:** Slow learning regions.
+
+---
+
+### 7. Learning Rate Scheduling
+Learning rates can be **dynamically adjusted** during training:
+- Step decay  
+- Exponential decay  
+- Cyclical learning rates  
+- Adaptive learning rate schedulers (Adam, RMSProp handle this internally)
+
+---
+
+### 8. Regularization in Optimization
+Regularization (L1, L2) introduces penalty terms in the loss function:
+\\[
+J'(\\theta) = J(\\theta) + \\lambda \\sum ||\\theta||^p
+\\]
+This discourages overfitting and improves generalization.
+
+---
+
+### 9. Practical Considerations
+- Normalize and scale features for stable convergence.
+- Use random weight initialization to break symmetry.
+- Monitor **training and validation loss** to detect overfitting.
+- Combine optimizers with regularization and dropout in deep learning.
+
+---
+
+### Summary
+Gradient Descent and its variants power nearly all ML optimization processes.  
+By iteratively minimizing loss, they enable models to learn efficiently and generalize better.`,
+  keyTakeaways: [
+    "Optimization minimizes loss to improve model accuracy.",
+    "Gradient Descent updates parameters in the direction of negative gradients.",
+    "Learning rate determines the step size during parameter updates.",
+    "Mini-Batch Gradient Descent balances efficiency and stability.",
+    "Momentum and NAG help accelerate convergence and reduce oscillations.",
+    "Adam optimizer combines momentum and RMSProp for adaptive learning.",
+    "Feature scaling and normalization improve optimization stability.",
+    "Loss functions define what the model learns to minimize (e.g., MSE, Cross-Entropy).",
+    "Learning rate scheduling dynamically adjusts training pace for better results.",
+    "Regularization improves model generalization during optimization."
+  ],
+  quiz: [
+    {
+      question: "### What is the main goal of optimization in ML?",
+      options: [
+        "To minimize the model’s loss function",
+        "To increase dataset size",
+        "To visualize training results",
+        "To reduce computation speed"
+      ],
+      correct: 0
+    },
+    {
+      question: "### In Gradient Descent, what does the learning rate (α) control?",
+      options: [
+        "The number of neurons in a model",
+        "The step size of parameter updates",
+        "The dataset shuffle frequency",
+        "The model’s regularization strength"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What happens if the learning rate is too large?",
+      options: [
+        "The model converges faster without error",
+        "The updates may overshoot the minimum and diverge",
+        "Training becomes more stable",
+        "Gradients vanish completely"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which type of Gradient Descent uses all data for each update?",
+      options: [
+        "Stochastic Gradient Descent",
+        "Batch Gradient Descent",
+        "Mini-Batch Gradient Descent",
+        "Momentum Gradient Descent"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the key advantage of Mini-Batch Gradient Descent?",
+      options: [
+        "It avoids the need for backpropagation",
+        "It balances computational efficiency and convergence stability",
+        "It doesn’t require feature scaling",
+        "It always finds the global minimum"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does the Adam optimizer combine?",
+      options: [
+        "Ridge and LASSO Regression",
+        "Momentum and RMSProp",
+        "SGD and Batch Normalization",
+        "Dropout and Weight Decay"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What problem do Momentum and Nesterov Accelerated Gradient solve?",
+      options: [
+        "Overfitting",
+        "Oscillations and slow convergence",
+        "Data imbalance",
+        "Feature redundancy"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which optimizer adapts learning rates for each parameter?",
+      options: [
+        "Adagrad",
+        "Ridge",
+        "Gradient Clipping",
+        "Polynomial Regression"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What are saddle points in optimization?",
+      options: [
+        "Flat regions where gradients are nearly zero but not minima",
+        "The optimal points with minimum loss",
+        "Regions of rapid convergence",
+        "Overfitted model regions"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is the function of regularization in optimization?",
+      options: [
+        "To reduce model overfitting by penalizing large weights",
+        "To increase learning rate automatically",
+        "To visualize cost surfaces",
+        "To randomize gradient direction"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Why is feature scaling important before optimization?",
+      options: [
+        "To prevent variable dominance and improve convergence speed",
+        "To reduce dataset size",
+        "To simplify the model architecture",
+        "To ensure integer-based weight updates"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which loss function is commonly used for regression?",
+      options: [
+        "Cross-Entropy Loss",
+        "Mean Squared Error (MSE)",
+        "Hinge Loss",
+        "Log Loss"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the primary issue with a very small learning rate?",
+      options: [
+        "It may skip minima",
+        "It leads to very slow convergence",
+        "It increases variance",
+        "It prevents weight updates"
+      ],
+      correct: 1
+    }
+  ]
+},
+
+{
+  id: 9,
+  title: "Decision Trees",
+  pages: "196–212",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+**Decision Trees** are supervised learning models that represent decisions and their possible outcomes as a **tree-like structure**.  
+They are used for both **classification** and **regression** tasks and are valued for their **interpretability and simplicity**.
+
+A Decision Tree partitions the dataset into smaller subsets based on feature conditions, forming a hierarchical structure of decisions leading to predictions.
+
+---
+
+### 1. Structure of a Decision Tree
+- **Root Node:** Represents the entire dataset (no split yet).
+- **Internal Nodes:** Represent decisions based on features.
+- **Branches:** Represent outcomes of tests (conditions).
+- **Leaf Nodes (Terminal Nodes):** Represent final predictions or outputs.
+
+Each split aims to create subsets that are as **pure as possible** (homogeneous in terms of class labels).
+
+---
+
+### 2. Decision Tree Algorithms
+Popular algorithms for building trees include:
+- **ID3 (Iterative Dichotomiser 3):** Uses *information gain* based on **entropy**.
+- **C4.5:** Extension of ID3; handles continuous attributes and pruning.
+- **CART (Classification and Regression Trees):** Uses *Gini index* for classification and *MSE* for regression.
+
+---
+
+### 3. Key Concepts
+
+#### a. Entropy
+Measures impurity or uncertainty in the dataset:
+\\[
+Entropy(S) = - \\sum p_i \\log_2(p_i)
+\\]
+Where \\( p_i \\) is the probability of class \\( i \\).
+
+- **Low entropy:** More homogeneous (pure) dataset.
+- **High entropy:** More heterogeneous (impure).
+
+#### b. Information Gain
+The reduction in entropy achieved by a split:
+\\[
+Gain(S, A) = Entropy(S) - \\sum \\frac{|S_v|}{|S|} Entropy(S_v)
+\\]
+Used to select the **best attribute** for splitting.
+
+#### c. Gini Index
+Used by CART to measure impurity:
+\\[
+Gini(S) = 1 - \\sum p_i^2
+\\]
+
+#### d. Gain Ratio
+Used by C4.5 to correct Information Gain’s bias toward features with many values.
+
+---
+
+### 4. Tree Construction Process
+1. Select the attribute with the highest Information Gain or lowest Gini index.  
+2. Split the dataset based on that attribute.  
+3. Repeat recursively on each subset until:
+   - All samples in a node belong to one class.
+   - Maximum depth is reached.
+   - No improvement in purity occurs.
+
+---
+
+### 5. Pruning
+- **Pre-Pruning (Early Stopping):** Stop tree growth early using criteria like max depth or min samples per node.
+- **Post-Pruning:** Grow the full tree and then prune branches that don’t improve accuracy (reduces overfitting).
+
+---
+
+### 6. Handling Continuous and Categorical Features
+- Continuous features are split by thresholding (e.g., “Age < 30”).
+- Categorical features split by distinct values.
+
+---
+
+### 7. Advantages
+- Easy to interpret and visualize.
+- Handles both numerical and categorical data.
+- Requires little data preprocessing.
+- Can model non-linear relationships.
+
+---
+
+### 8. Disadvantages
+- Prone to **overfitting**, especially with deep trees.
+- Small changes in data can lead to different tree structures (high variance).
+- Biased toward attributes with many distinct values (handled by gain ratio).
+
+---
+
+### 9. Decision Trees in Regression
+- Regression trees use MSE as the impurity measure.
+- Predictions are the **average of target values** in each leaf node.
+
+---
+
+### 10. Applications
+- **Credit scoring**
+- **Medical diagnosis**
+- **Customer segmentation**
+- **Stock market prediction**
+- **Fraud detection**
+
+---
+
+### Summary
+Decision Trees offer a powerful, interpretable framework for supervised learning.  
+However, without pruning or ensemble techniques, they risk overfitting — leading to unstable performance on unseen data.`,
+  keyTakeaways: [
+    "Decision Trees split data recursively based on feature values to predict outcomes.",
+    "Entropy and Information Gain measure data purity and guide splitting.",
+    "CART uses the Gini index for impurity measurement.",
+    "Pruning helps prevent overfitting by simplifying the model.",
+    "Decision Trees handle both categorical and numerical data.",
+    "They are interpretable but sensitive to data changes (high variance).",
+    "Regression trees predict continuous values using MSE as a criterion.",
+    "Decision Trees form the foundation of ensemble methods like Random Forests and Gradient Boosting."
+  ],
+  quiz: [
+    {
+      question: "### What is a Decision Tree primarily used for?",
+      options: [
+        "Unsupervised clustering",
+        "Supervised classification and regression",
+        "Feature scaling",
+        "Dimensionality reduction"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does the root node of a Decision Tree represent?",
+      options: [
+        "The final prediction result",
+        "The entire dataset before any splits",
+        "A single feature’s subset",
+        "A leaf with maximum purity"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which algorithm uses Information Gain based on Entropy?",
+      options: [
+        "CART",
+        "ID3",
+        "KNN",
+        "Random Forest"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the formula for Entropy?",
+      options: [
+        "Entropy = Σ(p_i²)",
+        "Entropy = -Σ(p_i log₂ p_i)",
+        "Entropy = 1 - Σ(p_i²)",
+        "Entropy = p_i - q_i"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does Information Gain measure?",
+      options: [
+        "The increase in impurity after a split",
+        "The reduction in entropy after splitting on an attribute",
+        "The correlation between features",
+        "The model’s overall accuracy"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What impurity measure does the CART algorithm use?",
+      options: [
+        "Entropy",
+        "Gini Index",
+        "Gain Ratio",
+        "Variance Reduction"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the purpose of pruning in Decision Trees?",
+      options: [
+        "To improve model interpretability by removing redundant branches",
+        "To increase training accuracy",
+        "To add more layers to the tree",
+        "To reduce data size"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which type of pruning grows the full tree first?",
+      options: [
+        "Pre-Pruning",
+        "Post-Pruning",
+        "Gain Pruning",
+        "Depth Pruning"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Why are Decision Trees prone to overfitting?",
+      options: [
+        "They use regularization by default",
+        "They memorize the training data without pruning",
+        "They ignore feature relationships",
+        "They require normalization"
+      ],
+      correct: 1
+    },
+    {
+      question: "### How do Decision Trees handle continuous features?",
+      options: [
+        "By splitting at threshold values (e.g., X < 30)",
+        "By removing continuous data",
+        "By rounding them to integers",
+        "By converting them to text"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is the prediction method for regression trees?",
+      options: [
+        "The average target value of the samples in a leaf node",
+        "The majority class of the samples in a leaf node",
+        "The highest information gain",
+        "The Gini index of the branch"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which metric helps choose the best attribute for a split?",
+      options: [
+        "Mean Absolute Error",
+        "Information Gain",
+        "Variance Score",
+        "R-squared"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is one major limitation of Decision Trees?",
+      options: [
+        "They cannot handle numeric data",
+        "They are highly sensitive to small data changes",
+        "They cannot perform regression",
+        "They require unsupervised data"
+      ],
+      correct: 1
+    }
+  ]
+},
+{
+  id: 10,
+  title: "K-Nearest Neighbors (KNN) and Kernel Methods",
+  pages: "212–226",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+**K-Nearest Neighbors (KNN)** and **Kernel Methods** represent **non-parametric learning approaches** in machine learning.  
+They do not assume an explicit functional form of the data but instead rely on **distance, similarity, or kernel functions** to make predictions.  
+Both techniques are widely used for classification, regression, and pattern recognition.
+
+---
+
+### 1. K-Nearest Neighbors (KNN)
+KNN is one of the simplest **instance-based** or **lazy learning** algorithms.  
+It makes predictions based on the **majority label (classification)** or **average value (regression)** of the K nearest samples in the training data.
+
+#### Algorithm Steps:
+1. Choose the number of neighbors \\( K \\).
+2. Compute the distance between the query point and all training examples.
+3. Select the **K nearest neighbors** based on a distance metric.
+4. Predict the label (classification) or mean value (regression) among those neighbors.
+
+---
+
+### 2. Distance Metrics
+Common distance functions used in KNN:
+- **Euclidean Distance:**  
+  \\[
+  d(x, y) = \\sqrt{\\sum_i (x_i - y_i)^2}
+  \\]
+- **Manhattan Distance:**  
+  \\[
+  d(x, y) = \\sum_i |x_i - y_i|
+  \\]
+- **Minkowski Distance:** Generalized form of Euclidean/Manhattan.
+- **Cosine Similarity:** Measures angle-based similarity for high-dimensional data (e.g., text).
+
+Choosing the right distance metric significantly impacts KNN’s accuracy.
+
+---
+
+### 3. Choosing the Value of K
+- **Small K:** Model becomes sensitive to noise (overfitting).  
+- **Large K:** Model becomes too smooth (underfitting).  
+- **Common practice:** Choose K via **cross-validation**.
+
+Odd K values are often preferred for binary classification to avoid ties.
+
+---
+
+### 4. Feature Scaling
+Because KNN relies on distances, **features must be normalized or standardized** to prevent variables with large scales from dominating the distance computation.
+
+---
+
+### 5. Advantages of KNN
+- Simple and intuitive.
+- No training phase — predictions happen at query time.
+- Works for both classification and regression.
+- Naturally handles multi-class problems.
+
+---
+
+### 6. Disadvantages of KNN
+- **Computationally expensive** for large datasets.
+- Sensitive to irrelevant or highly correlated features.
+- Requires feature scaling.
+- Performance declines in high-dimensional spaces (curse of dimensionality).
+
+---
+
+### 7. Kernel Methods
+Kernel methods enable **nonlinear learning** by implicitly mapping data into a higher-dimensional feature space.  
+Instead of transforming data explicitly, a **kernel function** computes the similarity between two samples in that space.
+
+#### Kernel Trick
+The **kernel trick** allows inner product computation in a high-dimensional space **without explicitly transforming the data**:
+\\[
+K(x, x') = \\langle \\phi(x), \\phi(x') \\rangle
+\\]
+Where \\( \\phi \\) is a feature mapping function.
+
+---
+
+### 8. Common Kernel Functions
+1. **Linear Kernel:**  
+   \\( K(x, x') = x^T x' \\)
+2. **Polynomial Kernel:**  
+   \\( K(x, x') = (x^T x' + c)^d \\)
+3. **Radial Basis Function (RBF) / Gaussian Kernel:**  
+   \\( K(x, x') = e^{-\\frac{||x - x'||^2}{2\\sigma^2}} \\)
+4. **Sigmoid Kernel:**  
+   \\( K(x, x') = \\tanh(\\alpha x^T x' + c) \\)
+
+---
+
+### 9. Support Vector Machines (SVMs)
+- SVMs are one of the most popular algorithms using kernel methods.  
+- They find the **optimal separating hyperplane** that maximizes the margin between classes.  
+- Kernels allow SVMs to handle **nonlinear decision boundaries**.
+
+---
+
+### 10. Advantages of Kernel Methods
+- Handle complex, nonlinear relationships.
+- Allow flexible decision boundaries.
+- Powerful in high-dimensional feature spaces.
+- Core of many ML algorithms beyond SVM (e.g., PCA, clustering).
+
+---
+
+### 11. Limitations
+- Choosing the right kernel and hyperparameters (like \\( \\sigma \\), \\( C \\)) is challenging.
+- Kernel methods scale poorly with large datasets (computationally heavy).
+- Sensitive to noise and irrelevant features.
+
+---
+
+### 12. Applications
+- **Image classification**
+- **Text categorization**
+- **Bioinformatics**
+- **Face recognition**
+- **Recommender systems**
+
+---
+
+### Summary
+KNN and Kernel Methods provide powerful, flexible techniques for both linear and nonlinear learning problems.  
+KNN is simple but computationally heavy, while kernel-based algorithms like SVM offer strong generalization capabilities for complex data.`,
+  keyTakeaways: [
+    "KNN is an instance-based learning algorithm relying on similarity or distance metrics.",
+    "The choice of K greatly affects model performance — small K overfits, large K underfits.",
+    "Feature scaling is essential in KNN since it’s distance-sensitive.",
+    "Common distance metrics include Euclidean, Manhattan, and Cosine similarity.",
+    "Kernel methods enable nonlinear learning by mapping data into high-dimensional feature spaces.",
+    "The kernel trick allows inner product computation without explicit feature transformation.",
+    "SVMs use kernels to find optimal hyperplanes for classification.",
+    "RBF, Polynomial, and Linear kernels are commonly used.",
+    "Both KNN and kernel methods can handle complex decision boundaries but are computationally demanding.",
+    "Model performance depends heavily on hyperparameter tuning and scaling."
+  ],
+  quiz: [
+    {
+      question: "### What type of algorithm is KNN?",
+      options: [
+        "Parametric and model-based",
+        "Non-parametric and instance-based",
+        "Rule-based and linear",
+        "Probabilistic and ensemble-based"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does K represent in KNN?",
+      options: [
+        "Number of layers in the model",
+        "Number of nearest neighbors used for prediction",
+        "Number of clusters in the dataset",
+        "Number of iterations for training"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the most common distance metric used in KNN?",
+      options: [
+        "Cosine Distance",
+        "Euclidean Distance",
+        "Jaccard Distance",
+        "Hamming Distance"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What happens when K is too small?",
+      options: [
+        "The model becomes overly smooth (underfits)",
+        "The model becomes too sensitive to noise (overfits)",
+        "The model stops learning",
+        "The dataset becomes linearly separable"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Why is feature scaling necessary in KNN?",
+      options: [
+        "To make sure all features contribute equally to distance calculations",
+        "To speed up neural network convergence",
+        "To reduce memory requirements",
+        "To improve visualization clarity"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is the key idea of the kernel trick?",
+      options: [
+        "Explicitly transforming data to higher dimensions",
+        "Computing inner products in high-dimensional space without explicit mapping",
+        "Reducing the dimensionality of data",
+        "Eliminating nonlinearity from the model"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which kernel is most widely used in nonlinear SVMs?",
+      options: [
+        "Linear Kernel",
+        "RBF (Gaussian) Kernel",
+        "Sigmoid Kernel",
+        "Polynomial Kernel"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does SVM aim to maximize?",
+      options: [
+        "Model accuracy",
+        "Distance (margin) between separating hyperplanes",
+        "Training speed",
+        "Feature correlation"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which of the following is NOT a valid kernel function?",
+      options: [
+        "RBF Kernel",
+        "Polynomial Kernel",
+        "Logarithmic Kernel",
+        "Linear Kernel"
+      ],
+      correct: 2
+    },
+    {
+      question: "### What is one disadvantage of KNN?",
+      options: [
+        "It cannot handle multiple classes",
+        "It requires storing the entire dataset and is computationally heavy",
+        "It cannot use distance metrics",
+        "It only works with categorical data"
+      ],
+      correct: 1
+    },
+    {
+      question: "### In high-dimensional spaces, KNN performance degrades due to?",
+      options: [
+        "Vanishing gradients",
+        "Curse of dimensionality",
+        "Regularization bias",
+        "Data augmentation"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the function of the kernel in SVM?",
+      options: [
+        "To linearize data before training",
+        "To measure similarity in transformed feature space",
+        "To remove noise from the dataset",
+        "To normalize features"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which applications commonly use KNN or kernel methods?",
+      options: [
+        "Image recognition and text classification",
+        "Database indexing",
+        "Neural architecture search",
+        "Genetic algorithms"
+      ],
+      correct: 0
+    }
+  ]
+},
+{
+  id: 11,
+  title: "Ensemble Learning (Bagging, Boosting, and Random Forests)",
+  pages: "228–262",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+**Ensemble Learning** combines multiple individual models (often called *weak learners*) to create a single **strong learner** that improves predictive performance and robustness.  
+The key principle: **“Many weak models can outperform one strong model.”**
+
+Ensemble methods reduce variance, bias, and overfitting by aggregating predictions from multiple models.
+
+---
+
+### 1. Types of Ensemble Methods
+1. **Bagging (Bootstrap Aggregating)** — reduces variance.
+2. **Boosting** — reduces bias.
+3. **Stacking** — combines different models through a meta-learner.
+
+---
+
+### 2. Bagging (Bootstrap Aggregating)
+#### Concept:
+- Multiple models (e.g., Decision Trees) are trained on **random subsets of data sampled with replacement**.
+- Predictions are **averaged (regression)** or **voted (classification)**.
+
+#### Steps:
+1. Generate multiple bootstrap samples from the dataset.  
+2. Train a separate model on each sample.  
+3. Combine predictions through majority voting or averaging.
+
+#### Key Benefits:
+- Reduces variance and overfitting.
+- Improves model stability.
+- Works best with high-variance, low-bias models (like Decision Trees).
+
+---
+
+### 3. Random Forests
+**Random Forests** are an extension of bagging that introduces **feature randomness** in addition to data sampling.
+
+#### Key Properties:
+- Each tree uses a random subset of features for splitting.
+- Aggregates predictions from many decorrelated Decision Trees.
+- Works well for classification, regression, and feature importance ranking.
+
+#### Advantages:
+- Highly accurate and robust.
+- Handles missing values and noisy data.
+- Provides internal feature importance metrics.
+
+#### Limitations:
+- Less interpretable than single trees.
+- Slower for real-time predictions due to multiple trees.
+
+---
+
+### 4. Boosting
+Boosting combines multiple **weak learners sequentially**, where each new model focuses on **correcting errors** made by previous ones.
+
+#### Core Idea:
+Each model is trained on a weighted dataset emphasizing the misclassified samples from the previous round.
+
+#### General Process:
+1. Initialize model weights equally.  
+2. Train base learner and calculate errors.  
+3. Increase weights for misclassified samples.  
+4. Train the next learner to focus on those difficult cases.  
+5. Combine all learners using weighted voting or averaging.
+
+---
+
+### 5. AdaBoost (Adaptive Boosting)
+- Each learner contributes to the final prediction with a **weighted influence** based on its accuracy.  
+- Focuses iteratively on samples that previous models misclassified.  
+- Works well with shallow Decision Trees (*stumps*).
+
+#### AdaBoost Algorithm Highlights:
+\\[
+F(x) = \\sum_{m=1}^{M} \\alpha_m h_m(x)
+\\]
+Where:
+- \\( h_m(x) \\): weak learner  
+- \\( \\alpha_m \\): weight proportional to accuracy  
+
+---
+
+### 6. Gradient Boosting
+Uses **gradient descent optimization** to minimize the loss function by adding new trees that correct residual errors.
+
+#### Process:
+1. Start with an initial prediction (often the mean of targets).  
+2. Compute residuals (errors).  
+3. Fit a new weak learner to these residuals.  
+4. Update predictions iteratively.
+
+#### Advantages:
+- High accuracy for structured data.
+- Can handle various loss functions.
+- Forms the basis for advanced algorithms like XGBoost, LightGBM, and CatBoost.
+
+---
+
+### 7. Stacking (Stacked Generalization)
+- Combines multiple base models using a **meta-learner** that learns how to best combine their predictions.
+- Example: Use Logistic Regression as a meta-learner over Random Forest, SVM, and Neural Network predictions.
+
+---
+
+### 8. Bias–Variance Tradeoff in Ensembles
+- **Bagging:** Reduces variance (averaging effect).
+- **Boosting:** Reduces bias (sequential improvement).
+- **Random Forests:** Balance both variance and interpretability.
+
+---
+
+### 9. Applications
+- Credit scoring and fraud detection  
+- Medical diagnostics  
+- Text classification  
+- Stock price prediction  
+- Image recognition  
+- Recommendation systems
+
+---
+
+### Summary
+Ensemble methods improve robustness and accuracy by leveraging the collective wisdom of multiple models.  
+They form the backbone of **state-of-the-art ML systems**, particularly for structured/tabular data.`,
+  keyTakeaways: [
+    "Ensemble Learning combines multiple models to enhance performance and reduce overfitting.",
+    "Bagging builds multiple models on bootstrapped datasets and aggregates their predictions.",
+    "Random Forests add feature randomness to bagging for better generalization.",
+    "Boosting trains models sequentially, focusing on correcting previous errors.",
+    "AdaBoost assigns weights to weak learners based on their accuracy.",
+    "Gradient Boosting uses residual errors and gradient optimization.",
+    "Stacking blends multiple models using a meta-learner.",
+    "Bagging reduces variance, while boosting reduces bias.",
+    "Ensemble methods power many modern ML algorithms like XGBoost and CatBoost.",
+    "Although powerful, ensembles can be computationally intensive and less interpretable."
+  ],
+  quiz: [
+    {
+      question: "### What is the main goal of Ensemble Learning?",
+      options: [
+        "To train a single deep model",
+        "To combine multiple models for better accuracy and stability",
+        "To remove feature correlations",
+        "To reduce the dataset size"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does Bagging stand for?",
+      options: [
+        "Batch Aggregation",
+        "Bootstrap Aggregating",
+        "Binary Aggregation",
+        "Boosted Aggregation"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What problem does Bagging primarily solve?",
+      options: [
+        "High bias",
+        "High variance",
+        "Low dimensionality",
+        "Feature correlation"
+      ],
+      correct: 1
+    },
+    {
+      question: "### How does Random Forest improve upon standard Bagging?",
+      options: [
+        "By using deeper trees",
+        "By introducing random feature selection at splits",
+        "By removing bootstrapping",
+        "By increasing bias"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What does Boosting focus on reducing?",
+      options: [
+        "Bias",
+        "Variance",
+        "Overfitting",
+        "Model depth"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ensemble method trains models sequentially?",
+      options: [
+        "Bagging",
+        "Boosting",
+        "Random Forest",
+        "Stacking"
+      ],
+      correct: 1
+    },
+    {
+      question: "### In AdaBoost, which samples get more weight?",
+      options: [
+        "Easily classified samples",
+        "Misclassified samples from previous rounds",
+        "Random samples",
+        "Samples with missing values"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the purpose of Gradient Boosting?",
+      options: [
+        "To fit residual errors from previous models using gradient descent",
+        "To train independent models in parallel",
+        "To reduce dataset size",
+        "To select best features only"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is a meta-learner in Stacking?",
+      options: [
+        "A model that predicts hyperparameters",
+        "A model that combines predictions from base learners",
+        "A neural network used for deep stacking",
+        "A feature engineering tool"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which of the following reduces model variance?",
+      options: [
+        "Boosting",
+        "Bagging",
+        "Regularization",
+        "Gradient Clipping"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which algorithm forms the basis of Random Forest?",
+      options: [
+        "Decision Trees",
+        "KNN",
+        "SVM",
+        "Naive Bayes"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which ensemble technique focuses on model diversity and weighted voting?",
+      options: [
+        "Boosting",
+        "Bagging",
+        "Stacking",
+        "Dropout"
+      ],
+      correct: 2
+    },
+    {
+      question: "### What is one limitation of ensemble models?",
+      options: [
+        "They cannot be used for classification tasks",
+        "They tend to be computationally intensive and less interpretable",
+        "They reduce both bias and variance simultaneously always",
+        "They cannot handle continuous data"
+      ],
+      correct: 1
+    }
+  ]
+},
+{
+  id: 12,
+  title: "Deep Learning",
+  pages: "263–end",
+  pdfFile: "lecture_notes.pdf",
+  summary: `### Overview
+**Deep Learning (DL)** is a subfield of Machine Learning that uses **multi-layered artificial neural networks (ANNs)** to learn complex hierarchical representations from data.  
+It has powered breakthroughs in **computer vision, natural language processing, speech recognition, and generative modeling.**
+
+Unlike traditional ML algorithms, which rely heavily on manual feature engineering, deep learning models **automatically learn features** directly from raw data.
+
+---
+
+### 1. Artificial Neural Networks (ANNs)
+#### Structure:
+An ANN consists of:
+- **Input Layer:** Receives data.
+- **Hidden Layers:** Perform transformations and feature extraction.
+- **Output Layer:** Produces predictions (classification or regression).
+
+Each connection between neurons has a **weight (w)** that determines the influence of one neuron on another.
+
+#### Neuron Operation:
+\\[
+z = w^T x + b
+\\]
+\\[
+a = f(z)
+\\]
+Where:
+- \\( f \\) is an activation function  
+- \\( a \\) is the neuron output  
+
+---
+
+### 2. Activation Functions
+Activation functions introduce **nonlinearity**, allowing networks to model complex relationships.
+
+Common examples:
+- **Sigmoid:** \\( f(x) = \\frac{1}{1 + e^{-x}} \\)
+- **Tanh:** \\( f(x) = \\tanh(x) \\)
+- **ReLU (Rectified Linear Unit):** \\( f(x) = \\max(0, x) \\)
+- **Leaky ReLU:** Variant of ReLU preventing dead neurons.
+- **Softmax:** Converts output scores into probabilities (used in classification).
+
+---
+
+### 3. Training Neural Networks
+#### Forward Propagation:
+- Inputs flow through the network to generate predictions.
+
+#### Loss Function:
+- Measures how far predictions are from true labels.
+- Common examples:
+  - **Cross-Entropy Loss** (classification)
+  - **Mean Squared Error (MSE)** (regression)
+
+#### Backpropagation:
+- Computes gradients of loss with respect to weights using the **chain rule**.
+- Weights are updated using an optimizer (e.g., **SGD**, **Adam**).
+
+#### Weight Update Rule:
+\\[
+w := w - \\alpha \\frac{\\partial J}{\\partial w}
+\\]
+Where \\( \\alpha \\) is the learning rate.
+
+---
+
+### 4. Deep Neural Networks (DNNs)
+- Networks with **multiple hidden layers**.
+- Capable of learning hierarchical representations — from low-level features (edges, shapes) to high-level concepts (faces, objects, meanings).
+- Require large datasets and high computational power.
+
+---
+
+### 5. Convolutional Neural Networks (CNNs)
+Used primarily for **image and spatial data**.
+
+#### Key Components:
+- **Convolution Layers:** Apply filters to detect local patterns (edges, textures).
+- **Pooling Layers:** Reduce dimensionality and computation.
+- **Fully Connected Layers:** Combine features for final classification.
+
+#### Applications:
+- Image recognition
+- Object detection
+- Medical imaging
+- Autonomous driving
+
+---
+
+### 6. Recurrent Neural Networks (RNNs)
+Used for **sequential data** (time series, text, audio).
+
+#### Characteristics:
+- Maintain **internal memory (state)** to process variable-length sequences.
+- Suffer from **vanishing/exploding gradients**, solved by:
+  - **LSTM (Long Short-Term Memory)**
+  - **GRU (Gated Recurrent Unit)**
+
+#### Applications:
+- Speech recognition
+- Text generation
+- Machine translation
+
+---
+
+### 7. Autoencoders
+- Neural networks designed to **compress and reconstruct** input data.
+- Used for **dimensionality reduction**, **denoising**, and **anomaly detection**.
+- Structure: Encoder → Bottleneck → Decoder.
+
+---
+
+### 8. Deep Belief Networks (DBNs)
+- Composed of multiple **Restricted Boltzmann Machines (RBMs)** stacked together.
+- Learn probabilistic representations of input data.
+- Predecessor to modern deep neural networks.
+
+---
+
+### 9. Generative Models
+Deep learning can also generate new data samples resembling training data.
+
+#### Types:
+- **Variational Autoencoders (VAEs):** Learn latent variable distributions.
+- **Generative Adversarial Networks (GANs):** Two networks (generator + discriminator) compete to generate realistic data.
+- **Diffusion Models:** Generate images via noise removal (used in tools like DALL·E, Midjourney).
+
+---
+
+### 10. Transfer Learning
+- Reusing knowledge learned from one task (pretrained model) for another related task.
+- Example: Fine-tuning ImageNet-trained CNNs for medical images.
+- Saves computation and improves accuracy on limited data.
+
+---
+
+### 11. Regularization in Deep Learning
+To prevent overfitting:
+- **Dropout:** Randomly disables neurons during training.
+- **Batch Normalization:** Normalizes layer inputs for stable learning.
+- **Weight Decay:** Adds L2 regularization to loss function.
+- **Early Stopping:** Stops training when validation performance plateaus.
+
+---
+
+### 12. Frameworks and Libraries
+Common frameworks for building deep learning models:
+- **TensorFlow / Keras** — High-level, scalable, and production-ready.
+- **PyTorch** — Dynamic computation graphs and flexibility for research.
+- **JAX** — Optimized for high-performance numerical computing.
+
+---
+
+### 13. Applications of Deep Learning
+- Computer vision (image classification, object detection)
+- Natural language processing (chatbots, translation)
+- Speech recognition
+- Healthcare (disease detection)
+- Autonomous vehicles
+- Generative art and AI creativity
+
+---
+
+### 14. Challenges in Deep Learning
+- Requires large labeled datasets and powerful hardware.
+- Difficult to interpret (black-box models).
+- Prone to overfitting on small data.
+- High energy consumption during training.
+
+---
+
+### Summary
+Deep Learning models mimic how the brain processes information through layers of abstraction.  
+They power most of today’s AI systems — from recommendation engines to generative AI — and continue to evolve through more efficient architectures and training techniques.`,
+  keyTakeaways: [
+    "Deep Learning uses multi-layer neural networks to learn hierarchical data representations.",
+    "Neurons compute weighted sums and apply nonlinear activation functions.",
+    "Backpropagation and gradient descent drive weight updates during training.",
+    "CNNs specialize in spatial data like images using filters and pooling layers.",
+    "RNNs handle sequential data through feedback connections (LSTM, GRU).",
+    "Autoencoders compress and reconstruct data for unsupervised learning.",
+    "GANs and VAEs are powerful generative models.",
+    "Transfer learning reuses pretrained networks for new tasks.",
+    "Dropout, batch normalization, and weight decay prevent overfitting.",
+    "Deep learning powers modern AI applications across industries."
+  ],
+  quiz: [
+    {
+      question: "### What defines Deep Learning compared to traditional ML?",
+      options: [
+        "It uses linear regression only",
+        "It employs multi-layered neural networks that learn features automatically",
+        "It eliminates the need for data",
+        "It replaces supervised learning entirely"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the purpose of an activation function?",
+      options: [
+        "To add nonlinearity and allow modeling of complex relationships",
+        "To compute gradients faster",
+        "To normalize feature scales",
+        "To store neuron weights"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which activation function is most commonly used in deep networks?",
+      options: [
+        "Sigmoid",
+        "ReLU",
+        "Tanh",
+        "Softmax"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What algorithm adjusts neural network weights during training?",
+      options: [
+        "Forward Propagation",
+        "Backpropagation",
+        "Pooling",
+        "Convolution"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What problem does dropout address?",
+      options: [
+        "Vanishing gradients",
+        "Overfitting",
+        "Data imbalance",
+        "Feature scaling"
+      ],
+      correct: 1
+    },
+    {
+      question: "### Which network type is used for image recognition?",
+      options: [
+        "RNN",
+        "CNN",
+        "Autoencoder",
+        "GAN"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the main challenge with RNNs that LSTM solves?",
+      options: [
+        "Overfitting",
+        "Vanishing and exploding gradients",
+        "Low computational efficiency",
+        "Data normalization"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the key difference between CNNs and RNNs?",
+      options: [
+        "CNNs process spatial data; RNNs process sequential data",
+        "RNNs require no training",
+        "CNNs are used for audio data only",
+        "They are identical architectures"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What does a generator do in a GAN?",
+      options: [
+        "Classifies input data",
+        "Creates synthetic data resembling the training set",
+        "Measures gradient updates",
+        "Encodes text features"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is the function of batch normalization?",
+      options: [
+        "To normalize layer inputs and stabilize training",
+        "To increase network depth",
+        "To reduce dataset size",
+        "To handle missing data"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which optimizer is most commonly used for training deep networks?",
+      options: [
+        "Adam",
+        "RMSProp",
+        "SGD",
+        "Adagrad"
+      ],
+      correct: 0
+    },
+    {
+      question: "### What is transfer learning used for?",
+      options: [
+        "Reusing pretrained models for related tasks",
+        "Training models without any data",
+        "Replacing gradient descent",
+        "Combining decision trees"
+      ],
+      correct: 0
+    },
+    {
+      question: "### Which of the following is a generative deep learning model?",
+      options: [
+        "SVM",
+        "GAN",
+        "Random Forest",
+        "Naive Bayes"
+      ],
+      correct: 1
+    },
+    {
+      question: "### What is one major drawback of deep learning?",
+      options: [
+        "It cannot handle images or text",
+        "It requires large datasets and is computationally expensive",
+        "It cannot model nonlinearity",
+        "It eliminates the need for optimization"
+      ],
+      correct: 1
+    }
+  ]
+},
   {
     id: 21,
     title: "Python Programming Fundamentals",

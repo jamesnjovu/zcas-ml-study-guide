@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Award } from 'lucide-react';
 import { Card } from './Card';
 import { Badge } from './Badge';
+import { renderMarkdown } from '../utils/markdownRenderer';
 
 export const UnitCard = ({ unit, onSelect, quizScore }) => {
   return (
@@ -12,7 +13,12 @@ export const UnitCard = ({ unit, onSelect, quizScore }) => {
         {quizScore && <Award className="w-6 h-6 text-yellow-500" />}
       </div>
       <h3 className="text-xl font-bold text-gray-800 mb-2">{unit.title}</h3>
-      <p className="text-sm text-gray-600 mb-4">Pages {unit.pages}</p>
+      <p className="text-sm text-gray-600 mb-2">Pages {unit.pages}</p>
+      {unit.summary && (
+        <div className="text-sm text-gray-700 mb-4 line-clamp-3">
+          {renderMarkdown(unit.summary)}
+        </div>
+      )}
       {quizScore && (
         <div className="bg-green-50 px-3 py-2 rounded-lg">
           <span className="text-sm font-semibold text-green-700">

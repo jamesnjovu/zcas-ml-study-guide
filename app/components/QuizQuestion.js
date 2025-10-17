@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CheckCircle, X, Volume2 } from 'lucide-react';
+import { renderMarkdown } from '../utils/markdownRenderer';
+import { stripMarkdown } from '../utils/stripMarkdown';
 
 export const QuizQuestion = ({
   question,
@@ -48,19 +50,21 @@ export const QuizQuestion = ({
   };
 
   const readQuestion = () => {
+    const cleanQuestion = stripMarkdown(question.question);
     const optionsText = question.options
-      .map((opt, idx) => `Option ${idx + 1}: ${opt}`)
+      .map((opt, idx) => `Option ${idx + 1}: ${stripMarkdown(opt)}`)
       .join('. ');
-    const fullText = `Question ${questionIndex + 1}: ${question.question}. ${optionsText}`;
+    const fullText = `Question ${questionIndex + 1}: ${cleanQuestion}. ${optionsText}`;
     onReadQuestion(fullText);
   };
 
   return (
     <div className="border-2 border-gray-200 rounded-lg p-6">
       <div className="flex items-start justify-between gap-4 mb-4">
-        <h4 className="font-semibold text-gray-800 flex-1">
-          {questionIndex + 1}. {question.question}
-        </h4>
+        <div className="font-semibold text-gray-800 flex-1">
+          <span>{questionIndex + 1}. </span>
+          {renderMarkdown(question.question)}
+        </div>
         {onReadQuestion && (
           <button
             onClick={readQuestion}
@@ -82,7 +86,7 @@ export const QuizQuestion = ({
             )} ${isSubmitted ? 'cursor-default' : 'cursor-pointer hover:shadow-none'} ${!isSubmitted && 'hover:shadow-md'}`}
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="flex-1 leading-relaxed">{option}</span>
+              <div className="flex-1 leading-relaxed">{renderMarkdown(option)}</div>
               {showIcon(optionIndex)}
             </div>
           </button>

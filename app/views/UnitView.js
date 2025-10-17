@@ -9,6 +9,8 @@ import { Card } from '../components/Card';
 import { Badge } from '../components/Badge';
 import { TextToSpeechControls } from '../components/TextToSpeechControls';
 import { useTextToSpeech } from '../hooks/useTextToSpeech';
+import { renderMarkdown } from '../utils/markdownRenderer';
+import { stripMarkdown } from '../utils/stripMarkdown';
 
 // Dynamically import PDF viewer with no SSR
 const PDFViewer = dynamic(
@@ -26,11 +28,12 @@ export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => 
 
   // Prepare the full text for reading
   const fullText = useMemo(() => {
+    const cleanSummary = stripMarkdown(unit.summary);
     const takeawaysText = unit.keyTakeaways
-      .map((takeaway, index) => `Takeaway ${index + 1}: ${takeaway}`)
+      .map((takeaway, index) => `Takeaway ${index + 1}: ${stripMarkdown(takeaway)}`)
       .join('. ');
 
-    return `${unit.title}. ${unit.summary}. Key Takeaways: ${takeawaysText}`;
+    return `${unit.title}. ${cleanSummary}. Key Takeaways: ${takeawaysText}`;
   }, [unit]);
 
   // Parse page range to get start and end pages
@@ -118,9 +121,9 @@ export const UnitView = ({ unit, units, onStartQuiz, onNextUnit, onGoHome }) => 
                 <FileText className="w-6 h-6 mr-2 text-blue-500" />
                 Summary
               </h3>
-              <p className="text-gray-700 leading-relaxed bg-blue-50 p-4 rounded-lg">
-                {unit.summary}
-              </p>
+              <div className="text-gray-700 leading-relaxed bg-blue-50 p-4 rounded-lg">
+                {renderMarkdown(unit.summary)}
+              </div>
             </div>
 
             <div>
